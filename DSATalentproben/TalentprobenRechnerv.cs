@@ -31,13 +31,6 @@ namespace DSATalentproben
         int aktuelleKategorie;
         string versionsnummer = "5.0";
 
-        //struct Kategorie
-        //{
-        //    public int kategorie { get; set; }
-        //    public string kName { get; set; }
-        //}
-        //Kategorie[] kats = { };
-
         struct Dateipfade
         {
             public string dateiAttribute { get; set; }
@@ -291,14 +284,21 @@ namespace DSATalentproben
 
             if (oeffnenDialog.ShowDialog() == DialogResult.OK)
             {
-                string path = Path.GetDirectoryName(oeffnenDialog.FileName);
-                SetzeDateipfade(oeffnenDialog.FileName);
-                AttributeAuslesen(pfade.dateiAttribute);
-                LadeAttributeInTB();
-                TalenteAuslesen(pfade.dateiTalente);
-                HeldAuslesen(oeffnenDialog.FileName);
-                dateiname = oeffnenDialog.FileName;
-                this.Text = $"DSA Talentprobenrechner v{versionsnummer} - {dateiname}";
+                try
+                {
+                    SetzeDateipfade(oeffnenDialog.FileName);
+                    AttributeAuslesen(pfade.dateiAttribute);
+                    LadeAttributeInTB();
+                    TalenteAuslesen(pfade.dateiTalente);
+                    HeldAuslesen(oeffnenDialog.FileName);
+                    dateiname = oeffnenDialog.FileName;
+                    this.Text = $"DSA Talentprobenrechner v{versionsnummer} - {dateiname}";
+                }
+                catch
+                {
+                    MessageBox.Show("Keine gültige Heldendatei");
+                    return;
+                }
             }
         }
 
@@ -467,27 +467,6 @@ namespace DSATalentproben
 
             return taw;
         }
-
-        /*private int Wuerfeln(int attr, int taw, int i)
-        {
-            Label[] ausgabenWurf = { ausgabeWurf01, ausgabeWurf02, ausgabeWurf03 };
-            Label[] ausgabenTaw = { tawRest01, tawRest02, tawRest03 };
-            //int wurf = 20;
-            int wurf = r.Next(1, 21);
-            int delta = wurf - attr;
-
-            if (wurf == 20) 
-            { patzerzaehler++; }
-
-            if (wurf > attr)
-            { taw -= delta; }
-
-            ausgabenWurf[i].Text = ""+wurf +" (gegen " +attr +")";
-            ausgabenTaw[i].Text = ""+taw;
-
-            return taw;
-        }
-        */
 
         private void btn_w6_Click(object sender, EventArgs e)
         {

@@ -75,6 +75,7 @@ namespace DSATalentproben
             this.tbHeldenname = new System.Windows.Forms.TextBox();
             this.resultat = new System.Windows.Forms.Label();
             this.btnDeleteTalent = new System.Windows.Forms.Button();
+            this.labelKategorie = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.versionInfo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -93,7 +94,6 @@ namespace DSATalentproben
             this.listBoxTalente = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelKategorie = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -676,6 +676,21 @@ namespace DSATalentproben
             this.btnDeleteTalent.UseVisualStyleBackColor = true;
             this.btnDeleteTalent.Click += new System.EventHandler(this.btnDeleteTalent_Click);
             // 
+            // labelKategorie
+            // 
+            this.labelKategorie.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelKategorie.AutoSize = true;
+            this.labelKategorie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelKategorie, 8);
+            this.labelKategorie.Location = new System.Drawing.Point(3, 81);
+            this.labelKategorie.Name = "labelKategorie";
+            this.labelKategorie.Size = new System.Drawing.Size(405, 27);
+            this.labelKategorie.TabIndex = 61;
+            this.labelKategorie.Text = "Kategorie";
+            this.labelKategorie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
@@ -858,21 +873,6 @@ namespace DSATalentproben
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Probenhistorie";
-            // 
-            // labelKategorie
-            // 
-            this.labelKategorie.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelKategorie.AutoSize = true;
-            this.labelKategorie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableLayoutPanel1.SetColumnSpan(this.labelKategorie, 8);
-            this.labelKategorie.Location = new System.Drawing.Point(3, 81);
-            this.labelKategorie.Name = "labelKategorie";
-            this.labelKategorie.Size = new System.Drawing.Size(405, 27);
-            this.labelKategorie.TabIndex = 61;
-            this.labelKategorie.Text = "Kategorie";
-            this.labelKategorie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox3
             // 
