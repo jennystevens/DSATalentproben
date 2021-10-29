@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
-namespace DSATalentproben
+namespace DSASkillchecks
 {
     public class Talent : IComparable
     {
@@ -13,17 +8,18 @@ namespace DSATalentproben
         public string attr01 { get; set; }
         public string attr02 { get; set; }
         public string attr03 { get; set; }
-        public int talentwert { get; set; }
-        public int kategorie { get; set; }
+        public int talentValue { get; set; }
+        public int category { get; set; }
 
         public int CompareTo(object obj)
         {
-            
-            if (obj == null) {  return 1; }
+            if (obj == null) 
+            {  return 1; }
+
             if (obj.GetType() == typeof(Talent))
             {
                 Talent tempTalent = (Talent)(obj);
-                var ret = this.kategorie.CompareTo(tempTalent.kategorie);
+                var ret = this.category.CompareTo(tempTalent.category);
                 if (ret == 0)
                 {
                     ret = this.name.CompareTo(tempTalent.name);
@@ -32,7 +28,7 @@ namespace DSATalentproben
             } 
             else  
             {
-                throw new Exception("obj ist kein Talent " + obj.GetType());
+                throw new Exception("obj is not a Talent " + obj.GetType());
             }
         }
 
@@ -57,8 +53,6 @@ namespace DSATalentproben
 
         public override string ToString()
         {
-            //string taw = this.talentwert.ToString().PadLeft(2, '0');
-            //return $"{taw} _ {this.name}";
             return this.name;
         }
 
@@ -69,7 +63,7 @@ namespace DSATalentproben
 
         public int GetTalentwert()
         {
-            return this.talentwert;
+            return this.talentValue;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DSATalentproben
+namespace DSASkillchecks
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace DSATalentproben
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TalentprobenRechner());
+            Application.Run(new SkillcheckTool());
         }
     }
 }

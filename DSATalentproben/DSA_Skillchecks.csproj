@@ -50,11 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Talent.cs" />
-    <Compile Include="TalentprobenRechnerv.cs">
+    <Compile Include="SkillcheckTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TalentprobenRechnerv.Designer.cs">
-      <DependentUpon>TalentprobenRechnerv.cs</DependentUpon>
+    <Compile Include="SkillcheckTool.Designer.cs">
+      <DependentUpon>SkillcheckTool.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +68,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TalentprobenRechnerv.resx">
-      <DependentUpon>TalentprobenRechnerv.cs</DependentUpon>
+    <EmbeddedResource Include="SkillcheckTool.resx">
+      <DependentUpon>SkillcheckTool.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

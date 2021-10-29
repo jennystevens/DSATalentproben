@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSATalentproben.Properties {
+namespace DSASkillchecks.Properties {
     using System;
     
     
