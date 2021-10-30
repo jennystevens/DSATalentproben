@@ -6,13 +6,14 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
 using System.Diagnostics;
+using System.Xml.Linq;
+using static DSASkillchecks.Hero;
 
 /*
  * To do:
  * save/read value for initiative
- * separate logic from UI
- * Hero-object instead of reading/writing directly from XML
- * unit-tests
+ * separate saving/loading from UI
+ * unit-tests for skillcheck method
  * errorhandling attribute textboxes input
  */
 
@@ -21,16 +22,13 @@ namespace DSASkillchecks
     public partial class SkillcheckTool : Form
     {
         Random r = new Random();
-        int rollAttr01, rollAttr02, rollAttr03 = 0;
-        int talentValue = 0;
         Talent selectedTalent;
-        int fumbleCounter = 0;
         string filename = string.Empty;
         bool edited = false;
         string[] categories = { "waffen", "körperlich", "gesellschaft", "natur", "wissen", "sprachen", "handwerk" }; 
         int currentCategory;
         string versionNumber = "5.0";
-        Hero hero = new Hero("Heldenname", new List<Talent>());
+        Hero hero = new Hero("Heldenname");
         TextBox[] tbAttributes;
 
         struct Filepaths
@@ -57,11 +55,18 @@ namespace DSASkillchecks
         private void InitializeInputFields(Hero hero)
         {
             tbHeroName.Text = hero.name;
-            for (int i = 0; i < hero.attributes.Length; i++)
-            {
-                tbAttributes[i].Text = hero.attributes[i].ToString();
-            }
+            LoadAttributesToTB();
             LoadTalentsToListbox();
+        }
+
+        private void LoadAttributesToTB()
+        {
+            foreach (var attribute in hero.attr)
+            {
+                TextBox correspondingTB = this.Controls.Find(attribute.Key, true).FirstOrDefault() as TextBox;
+                correspondingTB.Text = attribute.Value.ToString();
+            }
+
         }
 
         private void LoadTalentsToListbox()
@@ -103,7 +108,7 @@ namespace DSASkillchecks
             if (selectionType.Equals(typeof(Talent)))
             {
                 Talent t = ((sender as ListBox).SelectedItem as Talent);
-                SelectTalent(t);
+                LoadTalentInfo(t);
                 labelCategory.Text = categories[t.category].ToUpper();
                 currentCategory = t.category;
                 return;
@@ -150,31 +155,18 @@ namespace DSASkillchecks
             tb.SelectionStart = 0;
             tb.SelectionLength = tb.Text.Length;
         }
-
-        private void SelectTalent(Talent t)
-        {
-            selectedTalent = t;
-            currentCategory = t.category;
-            LoadTalentInfo(t);
-            modifier.Text = "" + 0;
-            modifier.Focus();
-        }
         
         private void LoadTalentInfo(Talent t)
         {
+            selectedTalent = t;
+            currentCategory = t.category;
             tbTalentName.Text = t.name;
-            tbTalentValue.Text = "" + t.talentValue;
+            tbTalentValue.Text = t.talentValue.ToString();
             cbAttr01.SelectedItem = t.attr01;
             cbAttr02.SelectedItem = t.attr02;
             cbAttr03.SelectedItem = t.attr03;
-
-            TextBox attr01 = this.Controls.Find(t.attr01, true).FirstOrDefault() as TextBox;
-            rollAttr01 = Convert.ToInt32(attr01.Text);
-            TextBox attr02 = this.Controls.Find(t.attr02, true).FirstOrDefault() as TextBox;
-            rollAttr02 = Convert.ToInt32(attr02.Text);
-            TextBox attr03 = this.Controls.Find(t.attr03, true).FirstOrDefault() as TextBox;
-            rollAttr03 = Convert.ToInt32(attr03.Text);
-            talentValue = t.talentValue;
+            modifier.Text = "" + 0;
+            modifier.Focus();
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -336,16 +328,23 @@ namespace DSASkillchecks
 
         private void SaveAttributes(string path)
         {
-            for (int i = 0; i < hero.attributes.Length; i++)
-            {
-                hero.attributes[i] = Convert.ToInt32(tbAttributes[i].Text);
-            }
+            //for (int i = 0; i < hero.attributes.Length; i++)
+            //{
+            //    hero.attributes[i] = Convert.ToInt32(tbAttributes[i].Text);
+            //}
 
-            XmlSerializer serial = new XmlSerializer(typeof(int[]));
-            using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+            //XmlSerializer serial = new XmlSerializer(typeof(int[]));
+            //using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+            //{
+            //    serial.Serialize(fs, hero.attributes);
+            //}
+
+            foreach (TextBox tb in tbAttributes)
             {
-                serial.Serialize(fs, hero.attributes);
+                hero.attr[tb.Name] = Convert.ToInt32(tb.Text);
             }
+            new XElement("root", hero.attr.Select(kv => new XElement(kv.Key, kv.Value)))
+            .Save(path, SaveOptions.OmitDuplicateNamespaces);
         }
 
         private void SetFilePaths(string filepath)
@@ -370,11 +369,14 @@ namespace DSASkillchecks
 
         private void ReadAttributes(string path)
         {
-            XmlSerializer serial = new XmlSerializer(typeof(int[]));
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                hero.attributes = (serial.Deserialize(fs)) as int[];
-            }
+            //XmlSerializer serial = new XmlSerializer(typeof(int[]));
+            //using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            //{
+            //    hero.attributes = (serial.Deserialize(fs)) as int[];
+            //}
+            hero.attr = XElement.Parse(File.ReadAllText(path))
+                .Elements()
+                .ToDictionary(k => k.Name.ToString(), v => Convert.ToInt32(v.Value));
         }
 
         private void ReadHero(string path)
@@ -387,19 +389,12 @@ namespace DSASkillchecks
             edited = false;
         }
 
-        private void LoadAttributesToTB()
-        {
-            for (int i=0; i<8; i++)
-            {
-                tbAttributes[i].Text = "" + hero.attributes[i];
-            }
-        }
-
         private void PerformSkillcheck_Click(object sender, EventArgs e)
         {
-            if (selectedTalent!= null)
+            if (selectedTalent != null)
             {
-                fumbleCounter = 0;
+                Label[] outputRolls = { rollResult01, rollResult02, rollResult03 };
+                Label[] outputTalentValue = { tvRemainder01, tvRemainder02, tvRemainder03 };
                 int mod;
                 try
                 {
@@ -412,69 +407,60 @@ namespace DSASkillchecks
                     return;
                     throw;
                 }
-                int tvRemainder = talentValue;
-                int[] attributes = { rollAttr01, rollAttr02, rollAttr03 };
-
-                //perform skillcheck
-                tvRemainder = RollHouserule(attributes, tvRemainder, mod);
-                OutputResult(tvRemainder);
+                
+                skillcheckResult result = hero.RollHouserule(r, selectedTalent, mod);
+                rollResult01.Text = result.rolls[0].ToString();
+                for (int i = 0; i < 3; i++)
+                {
+                    outputRolls[i].Text = "" + result.rolls[i] + " gegen " + result.attributes[i];
+                    outputTalentValue[i].Text = result.talentValueRemainder[i].ToString();
+                }
+                OutputResult(result.talentValueRemainder[2], result.fumbleCounter, mod);
 
                 //reset attributes to original values
-                LoadTalentInfo(selectedTalent); 
+                LoadTalentInfo(selectedTalent);
             }
         }
 
-        private int RollHouserule(int[] attributes, int talentValue, int mod)
+        private void OutputResult(int remainder, int fumbleCounter, int mod)
         {
-            Label[] outputRolls = { rollResult01, rollResult02, ausgabeWurf03 };
-            Label[] outputTalentValue = { tvRemainder01, tvRemainder02, tvRemainder03 };
-            int[] rolls = new int[3];
-            int[] modifiers = { 0, 0, 0 };
+            int difficulty = 0;
 
-            // roll three times and save to rolls array
-            for (int i = 0; i < 3; i++)
-            {
-                rolls[i] = r.Next(1, 21);
-                if (rolls[i] == 20) fumbleCounter++; 
-            }
+            // if skillcheck is actually made easier, adjust modifier value
+            if (mod < 0)
+            { difficulty = selectedTalent.talentValue + mod; }
 
-            // split modifier into three integers and save to array modifiers
-            if(mod != 0)
+            if (fumbleCounter < 2)
             {
-                double modSingleD = (double)mod / 3;
-                int modSingle = (int)Math.Round((double)modSingleD);
-                for (int i = 0; i < 3; i++)
+                if (remainder >= difficulty)
                 {
-                    modifiers[i] = modSingle;
+                    result.BackColor = Color.LightGreen;
+                    if (remainder <= 0)
+                    {
+                        result.Text = "Geschafft!";
+                        listBoxHistory.Items.Add(selectedTalent.name.PadRight(30, ' ') + "\tÜbrige Punkte: 0");
+                    }
+                    else
+                    {
+                        result.Text = "Geschafft! " + remainder + " übrig";
+                        listBoxHistory.Items.Add(selectedTalent.name.PadRight(30, ' ') + "\tÜbrige Punkte: " + Convert.ToString(remainder));
+                    }
                 }
-                if (modSingle * 3 < mod) modifiers[0] = modifiers[0] + 1;
-                if (modSingle * 3 > mod) modifiers[2] = modifiers[2] - 1;
+                else
+                {
+                    result.Text = "Verkackt!";
+                    result.BackColor = Color.Salmon;
+                    listBoxHistory.Items.Add(selectedTalent.name.PadRight(30, ' ') + "\tverkackt");
+                }
             }
-            
-            // arrange both arrays (rolls and attributes) in descending order
-            Array.Sort(rolls);
-            Array.Reverse(rolls);
-            Array.Sort(attributes);
-            Array.Reverse(attributes);
-
-            //subtract modifiers from attributes
-            for (int i = 0; i < 3; i++)
+            else
             {
-                attributes[i] = attributes[i] - modifiers[i];
+                result.Text = "PATZER!";
+                result.BackColor = Color.Red;
+                listBoxHistory.Items.Add(selectedTalent.name.PadRight(30, ' ') + " verpatzt");
             }
-
-            // subtract roll from each attribute
-            for (int i = 0; i < 3; i++)
-            {
-                int delta = attributes[i] - rolls[i];
-                // if negative: subtract difference from talent value
-                if (delta < 0) talentValue += delta; 
-
-                outputRolls[i].Text = "" + rolls[i] + " gegen " + attributes[i];
-                outputTalentValue[i].Text = "" + talentValue;
-            }
-
-            return talentValue;
+            listBoxHistory.SelectedIndex = listBoxHistory.Items.Count - 1;
+            listBoxHistory.SetSelected(listBoxHistory.Items.Count - 1, false);
         }
 
         private void btn_d6_Click(object sender, EventArgs e)
@@ -541,48 +527,6 @@ namespace DSASkillchecks
                     btnSave.PerformClick();
                 }
             }
-        }
-
-        private void OutputResult(int remainder)
-        {
-            int mod = Convert.ToInt32(modifier.Text);
-            int difficulty = 0;
-
-            // if skillcheck is actually made easier, adjust modifier value
-            if (mod < 0)
-            { difficulty = talentValue + mod; }
-            
-            if (fumbleCounter < 2)
-            {
-                if (remainder >= difficulty)
-                {
-                    result.BackColor = Color.LightGreen;
-                    if (remainder <= 0) 
-                    { 
-                        result.Text = "Geschafft!";
-                        listBoxHistory.Items.Add(selectedTalent.name.PadRight(30, ' ') + "\tÜbrige Punkte: 0");
-                    }
-                    else 
-                    { 
-                        result.Text = "Geschafft! " + remainder + " übrig";
-                        listBoxHistory.Items.Add(selectedTalent.name.PadRight(30,' ') + "\tÜbrige Punkte: " + Convert.ToString(remainder));
-                    }
-                }
-                else
-                {
-                    result.Text = "Verkackt!";
-                    result.BackColor = Color.Salmon;
-                    listBoxHistory.Items.Add(selectedTalent.name.PadRight(30, ' ') + "\tverkackt");
-                }
-            }
-            else
-            {
-                result.Text = "PATZER!";
-                result.BackColor = Color.Red;
-                listBoxHistory.Items.Add(selectedTalent.name.PadRight(30, ' ') + " verpatzt");
-            }
-            listBoxHistory.SelectedIndex = listBoxHistory.Items.Count - 1;
-            listBoxHistory.SetSelected(listBoxHistory.Items.Count - 1, false);
         }
 
         private void tbTalentname_Enter(object sender, EventArgs e)

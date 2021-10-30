@@ -52,8 +52,8 @@ namespace DSASkillchecks
             this.rollResult01 = new System.Windows.Forms.Label();
             this.rollResult02 = new System.Windows.Forms.Label();
             this.labelRoll02 = new System.Windows.Forms.Label();
-            this.ausgabeWurf03 = new System.Windows.Forms.Label();
             this.rollResult03 = new System.Windows.Forms.Label();
+            this.labelRoll03 = new System.Windows.Forms.Label();
             this.tvRemainder01 = new System.Windows.Forms.Label();
             this.tvRemainder02 = new System.Windows.Forms.Label();
             this.tvRemainder03 = new System.Windows.Forms.Label();
@@ -314,29 +314,29 @@ namespace DSASkillchecks
             this.labelRoll02.TabIndex = 18;
             this.labelRoll02.Text = "2. Wurf";
             // 
-            // ausgabeWurf03
-            // 
-            this.ausgabeWurf03.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ausgabeWurf03.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.ausgabeWurf03, 2);
-            this.ausgabeWurf03.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ausgabeWurf03.Location = new System.Drawing.Point(299, 302);
-            this.ausgabeWurf03.Name = "ausgabeWurf03";
-            this.ausgabeWurf03.Size = new System.Drawing.Size(14, 13);
-            this.ausgabeWurf03.TabIndex = 21;
-            this.ausgabeWurf03.Text = "0";
-            // 
             // rollResult03
             // 
             this.rollResult03.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rollResult03.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.rollResult03, 2);
             this.rollResult03.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rollResult03.Location = new System.Drawing.Point(281, 275);
+            this.rollResult03.Location = new System.Drawing.Point(299, 302);
             this.rollResult03.Name = "rollResult03";
-            this.rollResult03.Size = new System.Drawing.Size(49, 13);
-            this.rollResult03.TabIndex = 20;
-            this.rollResult03.Text = "3. Wurf";
+            this.rollResult03.Size = new System.Drawing.Size(14, 13);
+            this.rollResult03.TabIndex = 21;
+            this.rollResult03.Text = "0";
+            // 
+            // labelRoll03
+            // 
+            this.labelRoll03.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRoll03.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelRoll03, 2);
+            this.labelRoll03.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRoll03.Location = new System.Drawing.Point(281, 275);
+            this.labelRoll03.Name = "labelRoll03";
+            this.labelRoll03.Size = new System.Drawing.Size(49, 13);
+            this.labelRoll03.TabIndex = 20;
+            this.labelRoll03.Text = "3. Wurf";
             // 
             // tvRemainder01
             // 
@@ -562,8 +562,8 @@ namespace DSASkillchecks
             this.tableLayoutPanel1.Controls.Add(this.labelRoll01, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.rollResult01, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.tvRemainder01, 1, 12);
-            this.tableLayoutPanel1.Controls.Add(this.rollResult03, 5, 10);
-            this.tableLayoutPanel1.Controls.Add(this.ausgabeWurf03, 5, 11);
+            this.tableLayoutPanel1.Controls.Add(this.labelRoll03, 5, 10);
+            this.tableLayoutPanel1.Controls.Add(this.rollResult03, 5, 11);
             this.tableLayoutPanel1.Controls.Add(this.tvRemainder03, 5, 12);
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 0, 16);
             this.tableLayoutPanel1.Controls.Add(this.btnLoad, 6, 16);
@@ -939,8 +939,8 @@ namespace DSASkillchecks
         private System.Windows.Forms.Label rollResult01;
         private System.Windows.Forms.Label rollResult02;
         private System.Windows.Forms.Label labelRoll02;
-        private System.Windows.Forms.Label ausgabeWurf03;
         private System.Windows.Forms.Label rollResult03;
+        private System.Windows.Forms.Label labelRoll03;
         private System.Windows.Forms.Label tvRemainder01;
         private System.Windows.Forms.Label tvRemainder02;
         private System.Windows.Forms.Label tvRemainder03;

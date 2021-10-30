@@ -60,10 +60,5 @@ namespace DSASkillchecks
         {
             return this.name;
         }
-
-        public int GetTalentwert()
-        {
-            return this.talentValue;
-        }
     }
 }
