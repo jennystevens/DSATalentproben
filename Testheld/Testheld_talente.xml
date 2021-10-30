@@ -5,7 +5,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>10</talentalentValue>
+    <talentValue>10</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -13,7 +13,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>6</talentalentValue>
+    <talentValue>6</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -21,7 +21,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>10</talentalentValue>
+    <talentValue>10</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -29,7 +29,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -37,7 +37,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -45,7 +45,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>0</talentalentValue>
+    <talentValue>0</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -53,7 +53,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -61,7 +61,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>0</talentalentValue>
+    <talentValue>0</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -69,7 +69,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>1</talentalentValue>
+    <talentValue>1</talentValue>
     <category>0</category>
   </Talent>
   <Talent>
@@ -77,7 +77,7 @@
     <attr01>GE</attr01>
     <attr02>KO</attr02>
     <attr03>KO</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -85,7 +85,7 @@
     <attr01>MU</attr01>
     <attr02>CH</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -93,7 +93,7 @@
     <attr01>MU</attr01>
     <attr02>GE</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>6</talentalentValue>
+    <talentValue>6</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -101,7 +101,7 @@
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>GE</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -109,7 +109,7 @@
     <attr01>CH</attr01>
     <attr02>GE</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>6</talentalentValue>
+    <talentValue>6</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -117,7 +117,7 @@
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>GE</attr03>
-    <talentalentValue>7</talentalentValue>
+    <talentValue>7</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -125,7 +125,7 @@
     <attr01>GE</attr01>
     <attr02>KO</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -133,7 +133,7 @@
     <attr01>MU</attr01>
     <attr02>KO</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -141,7 +141,7 @@
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>GE</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -149,7 +149,7 @@
     <attr01>IN</attr01>
     <attr02>CH</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>1</talentalentValue>
+    <talentValue>1</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -157,7 +157,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>7</talentalentValue>
+    <talentValue>7</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -165,7 +165,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>1</talentalentValue>
+    <talentValue>1</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -173,7 +173,7 @@
     <attr01>CH</attr01>
     <attr02>GE</attr02>
     <attr03>GE</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -181,7 +181,7 @@
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -189,7 +189,7 @@
     <attr01>IN</attr01>
     <attr02>KO</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>1</category>
   </Talent>
   <Talent>
@@ -197,7 +197,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>2</category>
   </Talent>
   <Talent>
@@ -205,7 +205,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>2</category>
   </Talent>
   <Talent>
@@ -213,7 +213,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>2</category>
   </Talent>
   <Talent>
@@ -221,7 +221,7 @@
     <attr01>MU</attr01>
     <attr02>CH</attr02>
     <attr03>GE</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>2</category>
   </Talent>
   <Talent>
@@ -229,23 +229,15 @@
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>2</category>
-  </Talent>
-  <Talent>
-    <name>aa</name>
-    <attr01>MU</attr01>
-    <attr02>MU</attr02>
-    <attr03>MU</attr03>
-    <talentalentValue>0</talentalentValue>
-    <category>3</category>
   </Talent>
   <Talent>
     <name>Fährtensuchen</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>KO</attr03>
-    <talentalentValue>7</talentalentValue>
+    <talentValue>7</talentValue>
     <category>3</category>
   </Talent>
   <Talent>
@@ -253,7 +245,7 @@
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>3</category>
   </Talent>
   <Talent>
@@ -261,7 +253,7 @@
     <attr01>FF</attr01>
     <attr02>GE</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>3</category>
   </Talent>
   <Talent>
@@ -269,7 +261,7 @@
     <attr01>IN</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>2</talentalentValue>
+    <talentValue>2</talentValue>
     <category>3</category>
   </Talent>
   <Talent>
@@ -277,7 +269,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>6</talentalentValue>
+    <talentValue>6</talentValue>
     <category>3</category>
   </Talent>
   <Talent>
@@ -285,7 +277,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>3</category>
   </Talent>
   <Talent>
@@ -293,7 +285,7 @@
     <attr01>IN</attr01>
     <attr02>GE</attr02>
     <attr03>KO</attr03>
-    <talentalentValue>7</talentalentValue>
+    <talentValue>7</talentValue>
     <category>3</category>
   </Talent>
   <Talent>
@@ -301,7 +293,7 @@
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>0</talentalentValue>
+    <talentValue>0</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -309,7 +301,7 @@
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -317,7 +309,7 @@
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -325,7 +317,7 @@
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>2</talentalentValue>
+    <talentValue>2</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -333,7 +325,7 @@
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>1</talentalentValue>
+    <talentValue>1</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -341,7 +333,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -349,7 +341,7 @@
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -357,7 +349,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -365,7 +357,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -373,7 +365,7 @@
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>4</category>
   </Talent>
   <Talent>
@@ -381,7 +373,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>5</category>
   </Talent>
   <Talent>
@@ -389,7 +381,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>9</talentalentValue>
+    <talentValue>9</talentValue>
     <category>5</category>
   </Talent>
   <Talent>
@@ -397,7 +389,7 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentalentValue>10</talentalentValue>
+    <talentValue>10</talentValue>
     <category>5</category>
   </Talent>
   <Talent>
@@ -405,7 +397,7 @@
     <attr01>IN</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>1</talentalentValue>
+    <talentValue>1</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -413,7 +405,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>2</talentalentValue>
+    <talentValue>2</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -421,7 +413,7 @@
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>2</talentalentValue>
+    <talentValue>2</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -429,7 +421,7 @@
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KO</attr03>
-    <talentalentValue>4</talentalentValue>
+    <talentValue>4</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -437,7 +429,7 @@
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -445,7 +437,7 @@
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>CH</attr03>
-    <talentalentValue>2</talentalentValue>
+    <talentValue>2</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -453,7 +445,7 @@
     <attr01>KL</attr01>
     <attr02>CH</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -461,7 +453,7 @@
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -469,7 +461,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -477,7 +469,7 @@
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -485,7 +477,7 @@
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>5</talentalentValue>
+    <talentValue>5</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -493,7 +485,7 @@
     <attr01>IN</attr01>
     <attr02>FF</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>7</talentalentValue>
+    <talentValue>7</talentValue>
     <category>6</category>
   </Talent>
   <Talent>
@@ -501,7 +493,7 @@
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>FF</attr03>
-    <talentalentValue>3</talentalentValue>
+    <talentValue>3</talentValue>
     <category>6</category>
   </Talent>
 </ArrayOfTalent>
