@@ -5,503 +5,503 @@
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>10</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>10</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Dolche</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>6</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>6</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Hiebwaffen</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>10</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>10</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Raufen</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Ringen</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Säbel</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>0</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>0</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Speere</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Wurfmesser</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>0</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>0</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Zweihandhiebwaffen</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>1</talentwert>
-    <kategorie>0</kategorie>
+    <talentalentValue>1</talentalentValue>
+    <category>0</category>
   </Talent>
   <Talent>
     <name>Athletik</name>
     <attr01>GE</attr01>
     <attr02>KO</attr02>
     <attr03>KO</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Gaukeleien</name>
     <attr01>MU</attr01>
     <attr02>CH</attr02>
     <attr03>FF</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Klettern</name>
     <attr01>MU</attr01>
     <attr02>GE</attr02>
     <attr03>KK</attr03>
-    <talentwert>6</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>6</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Körperbeherrschung</name>
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>GE</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Reiten</name>
     <attr01>CH</attr01>
     <attr02>GE</attr02>
     <attr03>KK</attr03>
-    <talentwert>6</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>6</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Schleichen</name>
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>GE</attr03>
-    <talentwert>7</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>7</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Schwimmen</name>
     <attr01>GE</attr01>
     <attr02>KO</attr02>
     <attr03>KK</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Selbstbeherrschung</name>
     <attr01>MU</attr01>
     <attr02>KO</attr02>
     <attr03>KK</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Sich verstecken</name>
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>GE</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Singen</name>
     <attr01>IN</attr01>
     <attr02>CH</attr02>
     <attr03>CH</attr03>
-    <talentwert>1</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>1</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Sinnenschärfe</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentwert>7</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>7</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Stimmen Imitieren</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentwert>1</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>1</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Tanzen</name>
     <attr01>CH</attr01>
     <attr02>GE</attr02>
     <attr03>GE</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Taschendiebstahl</name>
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Zechen</name>
     <attr01>IN</attr01>
     <attr02>KO</attr02>
     <attr03>KK</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>1</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>1</category>
   </Talent>
   <Talent>
     <name>Etikette</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>2</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>2</category>
   </Talent>
   <Talent>
     <name>Gassenwissen</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>2</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>2</category>
   </Talent>
   <Talent>
     <name>Menschenkenntnis</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>2</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>2</category>
   </Talent>
   <Talent>
     <name>Sich verkleiden</name>
     <attr01>MU</attr01>
     <attr02>CH</attr02>
     <attr03>GE</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>2</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>2</category>
   </Talent>
   <Talent>
     <name>Überreden</name>
     <attr01>MU</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>2</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>2</category>
   </Talent>
   <Talent>
     <name>aa</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>0</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>0</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Fährtensuchen</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>KO</attr03>
-    <talentwert>7</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>7</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Fallenstellen</name>
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Fesseln/Entfesseln</name>
     <attr01>FF</attr01>
     <attr02>GE</attr02>
     <attr03>KK</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Fischen/Angeln</name>
     <attr01>IN</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentwert>2</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>2</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Orientierung</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentwert>6</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>6</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Wettervorhersage</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Wildnisleben</name>
     <attr01>IN</attr01>
     <attr02>GE</attr02>
     <attr03>KO</attr03>
-    <talentwert>7</talentwert>
-    <kategorie>3</kategorie>
+    <talentalentValue>7</talentalentValue>
+    <category>3</category>
   </Talent>
   <Talent>
     <name>Geographie</name>
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentwert>0</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>0</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Götter und Kulte</name>
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Heraldik</name>
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>FF</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Kriegskunst</name>
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>CH</attr03>
-    <talentwert>2</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>2</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Mechanik</name>
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentwert>1</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>1</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Pflanzenkunde</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Rechnen</name>
     <attr01>KL</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Sagen und Legenden</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>CH</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Schätzen</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>IN</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Tierkunde</name>
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>4</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>4</category>
   </Talent>
   <Talent>
     <name>Füchsisch</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>5</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>5</category>
   </Talent>
   <Talent>
     <name>Garethi</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>9</talentwert>
-    <kategorie>5</kategorie>
+    <talentalentValue>9</talentalentValue>
+    <category>5</category>
   </Talent>
   <Talent>
     <name>Rogolan</name>
     <attr01>MU</attr01>
     <attr02>MU</attr02>
     <attr03>MU</attr03>
-    <talentwert>10</talentwert>
-    <kategorie>5</kategorie>
+    <talentalentValue>10</talentalentValue>
+    <category>5</category>
   </Talent>
   <Talent>
     <name>Ackerbau</name>
     <attr01>IN</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentwert>1</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>1</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Bogenbau</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentwert>2</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>2</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Fleischer</name>
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentwert>2</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>2</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Gerber / Kürschner</name>
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KO</attr03>
-    <talentwert>4</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>4</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Heilkunde, Gift</name>
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>IN</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Heilkunde, Krankheiten</name>
     <attr01>MU</attr01>
     <attr02>KL</attr02>
     <attr03>CH</attr03>
-    <talentwert>2</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>2</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Heilkunde, Wunden</name>
     <attr01>KL</attr01>
     <attr02>CH</attr02>
     <attr03>FF</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Holzbearbeitung</name>
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>KK</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Kochen</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Lederarbeiten</name>
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>FF</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Malen/Zeichnen</name>
     <attr01>KL</attr01>
     <attr02>IN</attr02>
     <attr03>FF</attr03>
-    <talentwert>5</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>5</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Schlösser Knacken</name>
     <attr01>IN</attr01>
     <attr02>FF</attr02>
     <attr03>FF</attr03>
-    <talentwert>7</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>7</talentalentValue>
+    <category>6</category>
   </Talent>
   <Talent>
     <name>Schneidern</name>
     <attr01>KL</attr01>
     <attr02>FF</attr02>
     <attr03>FF</attr03>
-    <talentwert>3</talentwert>
-    <kategorie>6</kategorie>
+    <talentalentValue>3</talentalentValue>
+    <category>6</category>
   </Talent>
 </ArrayOfTalent>
