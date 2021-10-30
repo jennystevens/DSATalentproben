@@ -13,6 +13,7 @@ using System.Diagnostics;
  * separate logic from UI
  * Hero-object instead of reading/writing directly from XML
  * unit-tests
+ * errorhandling attribute textboxes input
  */
 
 namespace DSASkillchecks
@@ -22,16 +23,15 @@ namespace DSASkillchecks
         Random r = new Random();
         int rollAttr01, rollAttr02, rollAttr03 = 0;
         int talentValue = 0;
-        List<Talent> talents = new List<Talent>();
         Talent selectedTalent;
-        int[] attributes = new int[8];
         int fumbleCounter = 0;
         string filename = string.Empty;
-        string heroName = string.Empty;
         bool edited = false;
-        string[] categories = { "waffen", "körperlich", "gesellschaft", "natur", "wissen", "sprachen", "handwerk" };
+        string[] categories = { "waffen", "körperlich", "gesellschaft", "natur", "wissen", "sprachen", "handwerk" }; 
         int currentCategory;
         string versionNumber = "5.0";
+        Hero hero = new Hero("Heldenname", new List<Talent>());
+        TextBox[] tbAttributes;
 
         struct Filepaths
         {
@@ -48,9 +48,44 @@ namespace DSASkillchecks
         private void SkillcheckTool_Load(object sender, EventArgs e)
         {
             versionInfo.Text = $"*** v{versionNumber} 2021 von Ofenkatze (mail@jennystevens.de) ***";
-            LoadTalentsToListbox();
+            tbAttributes = new TextBox[] { MU, KL, IN, CH, FF, GE, KO, KK };
+            InitializeInputFields(hero);
             currentCategory = 0;
             listBoxTalents.SelectedIndex = 0;
+        }
+
+        private void InitializeInputFields(Hero hero)
+        {
+            tbHeroName.Text = hero.name;
+            for (int i = 0; i < hero.attributes.Length; i++)
+            {
+                tbAttributes[i].Text = hero.attributes[i].ToString();
+            }
+            LoadTalentsToListbox();
+        }
+
+        private void LoadTalentsToListbox()
+        {
+            listBoxTalents.Items.Clear();
+            for (int i = 0; i < categories.Length; i++)
+            {
+                if (i != 0) listBoxTalents.Items.Add("");
+                listBoxTalents.Items.Add(categories[i].ToUpper());
+                PrintTalentsByCategory(i);
+            }
+        }
+
+        private void PrintTalentsByCategory(int category)
+        {
+            foreach (Talent t in hero.talents)
+            {
+                if (t.category == category)
+                {
+                    listBoxTalents.Items.Add(t);
+                }
+                if (t.category > category)
+                    break;
+            }
         }
 
         private void listBoxTalents_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,31 +159,7 @@ namespace DSASkillchecks
             modifier.Text = "" + 0;
             modifier.Focus();
         }
-
-        private void LoadTalentsToListbox()
-        {
-            listBoxTalents.Items.Clear();
-            for (int i = 0; i < 7; i++)
-            {
-                if(i!=0) listBoxTalents.Items.Add("");
-                listBoxTalents.Items.Add(categories[i].ToUpper());
-                PrintTalentsByCategory(i);
-            }
-        }
         
-        private void PrintTalentsByCategory(int category)
-        {
-            foreach (Talent t in talents)
-            {
-                if (t.category == category)
-                {
-                    listBoxTalents.Items.Add(t);
-                }
-                if (t.category > category)
-                    break;
-            }
-        }
-
         private void LoadTalentInfo(Talent t)
         {
             tbTalentName.Text = t.name;
@@ -189,7 +200,7 @@ namespace DSASkillchecks
             selectedTalent.attr03 = cbAttr03.SelectedItem as string;
             selectedTalent.category = currentCategory;
 
-            talents.Sort();
+            hero.talents.Sort();
             LoadTalentsToListbox();
             listBoxTalents.SelectedItem = selectedTalent;
             edited = true;
@@ -206,24 +217,24 @@ namespace DSASkillchecks
             TalentDelete(selectedTalent);
         }
 
-        private void TalentNew(int k)
+        private void TalentNew(int category)
         {
-            List<Talent> neueTalente = talents.FindAll(t => t.name.Contains("Neues Talent"));
+            List<Talent> neueTalente = hero.talents.FindAll(t => t.name.Contains("Neues Talent"));
             int i = neueTalente.Count+1;
 
-            selectedTalent = new Talent() { name = "Neues Talent"+i, attr01 = "MU", attr02 = "MU", attr03 = "MU", talentValue = 0, category = k };
+            selectedTalent = new Talent() { name = "Neues Talent"+i, attr01 = "MU", attr02 = "MU", attr03 = "MU", talentValue = 0, category = category };
 
-            talents.Add(selectedTalent);
-            talents.Sort();
+            hero.talents.Add(selectedTalent);
+            hero.talents.Sort();
             LoadTalentsToListbox();
             listBoxTalents.SelectedItem = selectedTalent;
         }
 
         private void TalentDelete(Talent t)
         {
-            int i = talents.FindIndex(x => x == t);
+            int i = hero.talents.FindIndex(x => x == t);
             int posListBox = listBoxTalents.SelectedIndex;
-            talents.RemoveAt(i);
+            hero.talents.RemoveAt(i);
             LoadTalentsToListbox();
             listBoxTalents.SelectedIndex = posListBox-1;
         }
@@ -309,7 +320,7 @@ namespace DSASkillchecks
             XmlSerializer serial = new XmlSerializer(typeof(List<Talent>));
             using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
             {
-                serial.Serialize(fs, talents);
+                serial.Serialize(fs, hero.talents);
             }
         }
         
@@ -317,7 +328,7 @@ namespace DSASkillchecks
         {
             using (StreamWriter fileHero = new StreamWriter(path))
             {
-                fileHero.WriteLine(heroName);
+                fileHero.WriteLine(hero.name);
                 fileHero.WriteLine(attributes);
                 fileHero.WriteLine(talents);
             }
@@ -325,17 +336,15 @@ namespace DSASkillchecks
 
         private void SaveAttributes(string path)
         {
-            TextBox[] tbAttributes = { MU, KL, IN, CH, FF, GE, KO, KK };
-            Array.Clear(attributes, 0, attributes.Length);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < hero.attributes.Length; i++)
             {
-                attributes[i] = Convert.ToInt32(tbAttributes[i].Text);
+                hero.attributes[i] = Convert.ToInt32(tbAttributes[i].Text);
             }
 
             XmlSerializer serial = new XmlSerializer(typeof(int[]));
             using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
             {
-                serial.Serialize(fs, attributes);
+                serial.Serialize(fs, hero.attributes);
             }
         }
 
@@ -352,7 +361,7 @@ namespace DSASkillchecks
             XmlSerializer serial = new XmlSerializer(typeof(List<Talent>));
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                talents = serial.Deserialize(fs) as List<Talent>;
+                hero.talents = serial.Deserialize(fs) as List<Talent>;
             }
             currentCategory = 0;
             LoadTalentsToListbox();
@@ -364,7 +373,7 @@ namespace DSASkillchecks
             XmlSerializer serial = new XmlSerializer(typeof(int[]));
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                attributes = (serial.Deserialize(fs)) as int[];
+                hero.attributes = (serial.Deserialize(fs)) as int[];
             }
         }
 
@@ -372,18 +381,17 @@ namespace DSASkillchecks
         {
             using (StreamReader fileHero = new StreamReader(path))
             {
-                heroName = fileHero.ReadLine();
+                hero.name = fileHero.ReadLine();
             }
-            tbHeroName.Text = heroName;
+            tbHeroName.Text = hero.name;
             edited = false;
         }
 
         private void LoadAttributesToTB()
         {
-            TextBox[] tbAttributes = { MU, KL, IN, CH, FF, GE, KO, KK };
             for (int i=0; i<8; i++)
             {
-                tbAttributes[i].Text = "" + attributes[i];
+                tbAttributes[i].Text = "" + hero.attributes[i];
             }
         }
 
@@ -510,7 +518,7 @@ namespace DSASkillchecks
 
         private void tbHeroName_TextChanged(object sender, EventArgs e)
         {
-            heroName = tbHeroName.Text;
+            hero.name = tbHeroName.Text;
             edited = true;
         }
 
