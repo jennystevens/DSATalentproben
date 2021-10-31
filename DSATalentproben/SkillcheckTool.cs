@@ -14,7 +14,6 @@ using static DSASkillchecks.Filehandler;
  * To do:
  * save/read value for initiative
  * unit-test for skillcheck method
- * errorhandling attribute textboxes input
  */
 
 namespace DSASkillchecks
@@ -28,14 +27,7 @@ namespace DSASkillchecks
         int currentCategory;
         string versionNumber = "1.2";
         Hero hero = new Hero("Heldenname");
-        TextBox[] tbAttributes;
-
-        //struct Filepaths
-        //{
-        //    public string fileAttributes { get; set; }
-        //    public string fileTalents { get; set; }
-        //}
-        //Filepaths paths = new Filepaths();
+        NumericUpDown[] entryAttributes;
         Filehandler filehandler = new Filehandler();
         Paths paths = new Paths();
 
@@ -47,7 +39,7 @@ namespace DSASkillchecks
         private void SkillcheckTool_Load(object sender, EventArgs e)
         {
             versionInfo.Text = $"*** v{versionNumber} 2021 von Ofenkatze (mail@jennystevens.de) ***";
-            tbAttributes = new TextBox[] { MU, KL, IN, CH, FF, GE, KO, KK };
+            entryAttributes = new NumericUpDown[] { MU, KL, IN, CH, FF, GE, KO, KK };
             InitializeInputFields(hero);
             currentCategory = 0;
             listBoxTalents.SelectedIndex = 0;
@@ -64,8 +56,8 @@ namespace DSASkillchecks
         {
             foreach (var attribute in hero.attr)
             {
-                TextBox correspondingTB = this.Controls.Find(attribute.Key, true).FirstOrDefault() as TextBox;
-                correspondingTB.Text = attribute.Value.ToString();
+                NumericUpDown correspondingNUM = this.Controls.Find(attribute.Key, true).FirstOrDefault() as NumericUpDown;
+                correspondingNUM.Value = attribute.Value;
             }
 
         }
@@ -208,11 +200,13 @@ namespace DSASkillchecks
         {
             TalentNew(currentCategory);
             LoadTalentInfo(selectedTalent);
+            edited = true;
         }
 
         private void btnDeleteTalent_Click(object sender, EventArgs e)
         {
             TalentDelete(selectedTalent);
+            edited = true;
         }
 
         private void TalentNew(int category)
@@ -235,6 +229,7 @@ namespace DSASkillchecks
             hero.talents.RemoveAt(i);
             LoadTalentsToListbox();
             listBoxTalents.SelectedIndex = posListBox-1;
+            edited = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -276,15 +271,15 @@ namespace DSASkillchecks
 
         private void UpdateAttributes()
         {
-            foreach (TextBox tb in tbAttributes)
+            foreach (NumericUpDown num in entryAttributes)
             {
-                hero.attr[tb.Name] = Convert.ToInt32(tb.Text);
+                hero.attr[num.Name] = Convert.ToInt32(num.Value);
             }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            if (edited)
+            if (edited ||  CheckAttributesChanged())
             {
                 DialogResult result = MessageBox.Show("Wollen Sie die Änderungen speichern?", "Ungespeicherte Änderungen", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.Cancel)
@@ -332,6 +327,18 @@ namespace DSASkillchecks
                     return;
                 }
             }
+        }
+
+        private bool CheckAttributesChanged()
+        {
+            bool changed = false;
+            foreach (NumericUpDown num in entryAttributes)
+            {
+                foreach (var attribute in hero.attr)
+                    if (attribute.Value != num.Value)
+                    { changed = true; }
+            }
+            return changed;
         }
 
         private void PerformSkillcheck_Click(object sender, EventArgs e)
