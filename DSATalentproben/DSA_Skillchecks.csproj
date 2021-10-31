@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filehandler.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Talent.cs" />
     <Compile Include="SkillcheckTool.cs">

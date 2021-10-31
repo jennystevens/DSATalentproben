@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DSASkillchecks
 {
-    class Hero
+    public class Hero
     {
         public string name { get; set; }
         public int ini { get; set; }

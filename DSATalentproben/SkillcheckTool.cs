@@ -8,12 +8,12 @@ using System.Xml.Serialization;
 using System.Diagnostics;
 using System.Xml.Linq;
 using static DSASkillchecks.Hero;
+using static DSASkillchecks.Filehandler;
 
 /*
  * To do:
  * save/read value for initiative
- * separate saving/loading from UI
- * unit-tests for skillcheck method
+ * unit-test for skillcheck method
  * errorhandling attribute textboxes input
  */
 
@@ -23,20 +23,21 @@ namespace DSASkillchecks
     {
         Random r = new Random();
         Talent selectedTalent;
-        string filename = string.Empty;
         bool edited = false;
         string[] categories = { "waffen", "körperlich", "gesellschaft", "natur", "wissen", "sprachen", "handwerk" }; 
         int currentCategory;
-        string versionNumber = "5.0";
+        string versionNumber = "1.2";
         Hero hero = new Hero("Heldenname");
         TextBox[] tbAttributes;
 
-        struct Filepaths
-        {
-            public string fileAttributes { get; set; }
-            public string fileTalents { get; set; }
-        }
-        Filepaths paths = new Filepaths();
+        //struct Filepaths
+        //{
+        //    public string fileAttributes { get; set; }
+        //    public string fileTalents { get; set; }
+        //}
+        //Filepaths paths = new Filepaths();
+        Filehandler filehandler = new Filehandler();
+        Paths paths = new Paths();
 
         public SkillcheckTool()
         {
@@ -99,21 +100,25 @@ namespace DSASkillchecks
             Type selectionType = (sender as ListBox).SelectedItem.GetType();
             String selectionContent = (sender as ListBox).SelectedItem.ToString();
 
+            //if selection is an empty line, return
             if (string.IsNullOrEmpty(selectionContent))
             {
                 DisableButtons();
                 return;
             }
 
+            // if selection is a talent, load talent
             if (selectionType.Equals(typeof(Talent)))
             {
                 Talent t = ((sender as ListBox).SelectedItem as Talent);
+                selectedTalent = t;
                 LoadTalentInfo(t);
                 labelCategory.Text = categories[t.category].ToUpper();
                 currentCategory = t.category;
                 return;
             }
 
+            // if selection is a category headline, select current category
             if (selectionType.Equals(typeof(String)))
             {
                 string ueberschrift = ((sender as ListBox).SelectedItem as String).ToLower();
@@ -195,6 +200,7 @@ namespace DSASkillchecks
             hero.talents.Sort();
             LoadTalentsToListbox();
             listBoxTalents.SelectedItem = selectedTalent;
+            UpdateAttributes();
             edited = true;
         }
 
@@ -233,18 +239,16 @@ namespace DSASkillchecks
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (filename == string.Empty)
+            if (filehandler.Filename == string.Empty)
             {
                 btnSaveAs.PerformClick();
             }
             else
             {
-                SaveAttributes(paths.fileAttributes);
-                SaveTalents(paths.fileTalents);
-                SaveHero(filename, paths.fileAttributes, paths.fileTalents);
+                SaveFile(hero, filehandler, paths);
                 MessageBox.Show("Held gespeichert!");
             }
-            this.Text = $"DSA Talentprobenrechner v{versionNumber} - {filename}";
+            this.Text = $"DSA Talentprobenrechner v{versionNumber} - {filehandler.Filename}";
             edited = false;
         }
 
@@ -256,11 +260,25 @@ namespace DSASkillchecks
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                SetFilePaths(saveDialog.FileName);
-                SaveAttributes(paths.fileAttributes);
-                SaveTalents(paths.fileTalents);
-                SaveHero(saveDialog.FileName, paths.fileAttributes, paths.fileTalents);
-                filename = saveDialog.FileName;
+                filehandler.Filename = saveDialog.FileName;
+                paths = filehandler.SetFilePaths(filehandler.Filename);
+                SaveFile(hero, filehandler, paths);
+            }
+        }
+
+        private void SaveFile(Hero hero, Filehandler filehandler, Paths paths)
+        {
+            UpdateAttributes();
+            filehandler.SaveAttributes(paths.fileAttributes, hero);
+            filehandler.SaveTalents(paths.fileTalents, hero);
+            filehandler.SaveHero(filehandler.Filename, paths.fileAttributes, paths.fileTalents, hero);
+        }
+
+        private void UpdateAttributes()
+        {
+            foreach (TextBox tb in tbAttributes)
+            {
+                hero.attr[tb.Name] = Convert.ToInt32(tb.Text);
             }
         }
 
@@ -291,13 +309,22 @@ namespace DSASkillchecks
             {
                 try
                 {
-                    SetFilePaths(openDialog.FileName);
-                    ReadAttributes(paths.fileAttributes);
+                    filehandler.Filename = openDialog.FileName;
+                    paths = filehandler.SetFilePaths(filehandler.Filename);
+
+                    filehandler.ReadAttributes(paths.fileAttributes, hero);
                     LoadAttributesToTB();
-                    ReadTalents(paths.fileTalents);
-                    ReadHero(openDialog.FileName);
-                    filename = openDialog.FileName;
-                    this.Text = $"DSA Talentprobenrechner v{versionNumber} - {filename}";
+
+                    filehandler.ReadTalents(paths.fileTalents, hero);
+                    currentCategory = 0;
+                    LoadTalentsToListbox();
+                    listBoxTalents.SelectedIndex = 0;
+                    
+                    filehandler.ReadHero(filehandler.Filename, hero);
+                    tbHeroName.Text = hero.name;
+                    
+                    edited = false;
+                    this.Text = $"DSA Talentprobenrechner v{versionNumber} - {filehandler.Filename}";
                 }
                 catch
                 {
@@ -305,88 +332,6 @@ namespace DSASkillchecks
                     return;
                 }
             }
-        }
-
-        private void SaveTalents(string path)
-        {
-            XmlSerializer serial = new XmlSerializer(typeof(List<Talent>));
-            using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
-            {
-                serial.Serialize(fs, hero.talents);
-            }
-        }
-        
-        private void SaveHero(string path, string attributes, string talents)
-        {
-            using (StreamWriter fileHero = new StreamWriter(path))
-            {
-                fileHero.WriteLine(hero.name);
-                fileHero.WriteLine(attributes);
-                fileHero.WriteLine(talents);
-            }
-        }
-
-        private void SaveAttributes(string path)
-        {
-            //for (int i = 0; i < hero.attributes.Length; i++)
-            //{
-            //    hero.attributes[i] = Convert.ToInt32(tbAttributes[i].Text);
-            //}
-
-            //XmlSerializer serial = new XmlSerializer(typeof(int[]));
-            //using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
-            //{
-            //    serial.Serialize(fs, hero.attributes);
-            //}
-
-            foreach (TextBox tb in tbAttributes)
-            {
-                hero.attr[tb.Name] = Convert.ToInt32(tb.Text);
-            }
-            new XElement("root", hero.attr.Select(kv => new XElement(kv.Key, kv.Value)))
-            .Save(path, SaveOptions.OmitDuplicateNamespaces);
-        }
-
-        private void SetFilePaths(string filepath)
-        {
-            string path = Path.GetDirectoryName(filepath);
-            string dateiname = Path.GetFileNameWithoutExtension(filepath);
-            paths.fileAttributes = path + "\\" + dateiname + "_attribute.xml";
-            paths.fileTalents = path + "\\" + dateiname + "_talente.xml";
-        }
-
-        private void ReadTalents(string path) 
-        {
-            XmlSerializer serial = new XmlSerializer(typeof(List<Talent>));
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                hero.talents = serial.Deserialize(fs) as List<Talent>;
-            }
-            currentCategory = 0;
-            LoadTalentsToListbox();
-            listBoxTalents.SelectedIndex = 0;
-        }
-
-        private void ReadAttributes(string path)
-        {
-            //XmlSerializer serial = new XmlSerializer(typeof(int[]));
-            //using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-            //{
-            //    hero.attributes = (serial.Deserialize(fs)) as int[];
-            //}
-            hero.attr = XElement.Parse(File.ReadAllText(path))
-                .Elements()
-                .ToDictionary(k => k.Name.ToString(), v => Convert.ToInt32(v.Value));
-        }
-
-        private void ReadHero(string path)
-        {
-            using (StreamReader fileHero = new StreamReader(path))
-            {
-                hero.name = fileHero.ReadLine();
-            }
-            tbHeroName.Text = hero.name;
-            edited = false;
         }
 
         private void PerformSkillcheck_Click(object sender, EventArgs e)
