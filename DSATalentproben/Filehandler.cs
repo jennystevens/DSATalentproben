@@ -17,74 +17,92 @@ namespace DSASkillchecks
             get => _filename;
             set => _filename = value;
         }
-        public struct Paths
-        {
-            public string fileAttributes { get; set; }
-            public string fileTalents { get; set; }
-        }
 
         public Filehandler()
         {
             this.Filename = string.Empty;
         }
 
-        public void SaveTalents(string path, Hero hero)
+        public void SaveHeroFile(string path, Hero hero)
         {
-            XmlSerializer serial = new XmlSerializer(typeof(List<Talent>));
-            using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+            XElement heroStats =
+                new XElement("Hero",
+                    new XElement("heroname", hero.name),
+                    new XElement("attributes", hero.attr.Select(kv => new XElement(kv.Key, kv.Value)))
+                );
+            XElement Xtalents = GatherTalents(hero.talents);
+            heroStats.Add(Xtalents);
+            heroStats.Save(path);
+        }
+
+        XElement GatherTalents(List<Talent> talents)
+        {
+            XElement Xtalents = new XElement("talents");
+            foreach (Talent t in talents)
             {
-                serial.Serialize(fs, hero.talents);
+                XElement talent = new XElement("talent",
+                        new XElement("name", t.name),
+                        new XElement("attr01", t.attr01),
+                        new XElement("attr02", t.attr02),
+                        new XElement("attr03", t.attr03),
+                        new XElement("talentValue", t.talentValue),
+                        new XElement("category", t.category)
+                    );
+                Xtalents.Add(talent);
             }
+            return Xtalents;
         }
 
-        public void SaveAttributes(string path, Hero hero)
+        public Hero LoadHeroFile(string path, Hero hero)
         {
-            new XElement("attributes", hero.attr.Select(kv => new XElement(kv.Key, kv.Value)))
-            .Save(path, SaveOptions.OmitDuplicateNamespaces);
+            XElement heroStats = XElement.Load(path);
+            hero.name = LoadName(heroStats);
+            hero.attr = LoadAttributes(heroStats);
+            hero.talents = LoadTalents(heroStats);
+            return hero;
         }
 
-        public void SaveHero(string path, string attributes, string talents, Hero hero)
+        string LoadName(XElement heroStats)
         {
-            using (StreamWriter fileHero = new StreamWriter(path))
+            IEnumerable<XElement> heroname = from descendant in heroStats.Descendants("heroname")
+                                             select descendant;
+            string name = heroname.ElementAt(0).Value.ToString();
+            return name;
+        }
+
+        Dictionary<string, int> LoadAttributes(XElement heroStats)
+        {
+            IEnumerable<XElement> attr = from descendant in heroStats.Descendants("attributes")
+                                         select descendant;
+            Dictionary<string, int> attributes = attr.Elements().ToDictionary(k => k.Name.ToString(), v => Convert.ToInt32(v.Value));
+            return attributes;
+        }
+
+        List<Talent> LoadTalents(XElement heroStats)
+        {
+            List<Talent> talents = new List<Talent>();
+            IEnumerable<XElement> Xtalents = from talent in heroStats.Descendants("talents")
+                                                  select talent;
+
+            foreach (XElement element in Xtalents)
             {
-                fileHero.WriteLine(hero.name);
-                fileHero.WriteLine(attributes);
-                fileHero.WriteLine(talents);
+                IEnumerable<XElement> allTalents = element.Descendants("talent");
+
+                foreach (XElement talent in allTalents)
+                {
+                    Talent t = new Talent
+                    {
+                        name = talent.Element("name").Value,
+                        attr01 = talent.Element("attr01").Value,
+                        attr02 = talent.Element("attr02").Value,
+                        attr03 = talent.Element("attr03").Value,
+                        talentValue = Convert.ToInt32(talent.Element("talentValue").Value),
+                        category = Convert.ToInt32(talent.Element("category").Value)
+                    };
+                    talents.Add(t);
+                }
             }
-        }
-
-        public Paths SetFilePaths(string filepath)
-        {
-            Paths paths = new Paths();
-            string strippedPath = Path.GetDirectoryName(filepath);
-            string filename = Path.GetFileNameWithoutExtension(filepath);
-            paths.fileAttributes = strippedPath + "\\" + filename + "_attribute.xml";
-            paths.fileTalents = strippedPath + "\\" + filename + "_talente.xml";
-            return paths;
-        }
-
-        public void ReadAttributes(string path, Hero hero)
-        {
-            hero.attr = XElement.Parse(File.ReadAllText(path))
-                .Elements()
-                .ToDictionary(k => k.Name.ToString(), v => Convert.ToInt32(v.Value));
-        }
-
-        public void ReadTalents(string path, Hero hero)
-        {
-            XmlSerializer serial = new XmlSerializer(typeof(List<Talent>));
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                hero.talents = serial.Deserialize(fs) as List<Talent>;
-            }
-        }
-
-        public void ReadHero(string path, Hero hero)
-        {
-            using (StreamReader fileHero = new StreamReader(path))
-            {
-                hero.name = fileHero.ReadLine();
-            }
+            return talents;
         }
     }
 }

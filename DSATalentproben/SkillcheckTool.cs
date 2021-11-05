@@ -12,8 +12,9 @@ using static DSASkillchecks.Filehandler;
 
 /*
  * To do:
- * save/read value for initiative
+ * save/read hero combat values to GUI
  * unit-test for skillcheck method
+ * light up corresponding attributes when performing skillcheck
  */
 
 namespace DSASkillchecks
@@ -25,11 +26,10 @@ namespace DSASkillchecks
         bool edited = false;
         string[] categories = { "waffen", "körperlich", "gesellschaft", "natur", "wissen", "sprachen", "handwerk" }; 
         int currentCategory;
-        string versionNumber = "1.2";
+        string versionNumber = "1.3";
         Hero hero = new Hero("Heldenname");
         NumericUpDown[] entryAttributes;
-        Filehandler filehandler = new Filehandler();
-        Paths paths = new Paths();
+        Filehandler fh = new Filehandler();
 
         public SkillcheckTool()
         {
@@ -59,7 +59,6 @@ namespace DSASkillchecks
                 NumericUpDown correspondingNUM = this.Controls.Find(attribute.Key, true).FirstOrDefault() as NumericUpDown;
                 correspondingNUM.Value = attribute.Value;
             }
-
         }
 
         private void LoadTalentsToListbox()
@@ -234,16 +233,17 @@ namespace DSASkillchecks
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (filehandler.Filename == string.Empty)
+            if (fh.Filename == string.Empty)
             {
                 btnSaveAs.PerformClick();
             }
             else
             {
-                SaveFile(hero, filehandler, paths);
+                UpdateAttributes();
+                fh.SaveHeroFile(fh.Filename, hero);
                 MessageBox.Show("Held gespeichert!");
             }
-            this.Text = $"DSA Talentprobenrechner v{versionNumber} - {filehandler.Filename}";
+            this.Text = $"DSA Talentprobenrechner v{versionNumber} - {fh.Filename}";
             edited = false;
         }
 
@@ -251,22 +251,13 @@ namespace DSASkillchecks
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = "XML-Dateien|*.xml";
-            saveDialog.FileName = string.Empty;
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                filehandler.Filename = saveDialog.FileName;
-                paths = filehandler.SetFilePaths(filehandler.Filename);
-                SaveFile(hero, filehandler, paths);
+                fh.Filename = saveDialog.FileName;
+                UpdateAttributes();
+                fh.SaveHeroFile(fh.Filename, hero);
             }
-        }
-
-        private void SaveFile(Hero hero, Filehandler filehandler, Paths paths)
-        {
-            UpdateAttributes();
-            filehandler.SaveAttributes(paths.fileAttributes, hero);
-            filehandler.SaveTalents(paths.fileTalents, hero);
-            filehandler.SaveHero(filehandler.Filename, paths.fileAttributes, paths.fileTalents, hero);
         }
 
         private void UpdateAttributes()
@@ -279,7 +270,7 @@ namespace DSASkillchecks
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            if (edited ||  CheckAttributesChanged())
+            if (edited | AttributesChanged())
             {
                 DialogResult result = MessageBox.Show("Wollen Sie die Änderungen speichern?", "Ungespeicherte Änderungen", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.Cancel)
@@ -298,28 +289,20 @@ namespace DSASkillchecks
 
             OpenFileDialog openDialog = new OpenFileDialog();
             openDialog.Filter = "XML-Dateien|*.xml";
-            openDialog.FileName = string.Empty;
 
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    filehandler.Filename = openDialog.FileName;
-                    paths = filehandler.SetFilePaths(filehandler.Filename);
-
-                    filehandler.ReadAttributes(paths.fileAttributes, hero);
+                    hero = fh.LoadHeroFile(openDialog.FileName, hero);
                     LoadAttributesToTB();
-
-                    filehandler.ReadTalents(paths.fileTalents, hero);
-                    currentCategory = 0;
                     LoadTalentsToListbox();
+                    currentCategory = 0;
                     listBoxTalents.SelectedIndex = 0;
-                    
-                    filehandler.ReadHero(filehandler.Filename, hero);
                     tbHeroName.Text = hero.name;
-                    
+
                     edited = false;
-                    this.Text = $"DSA Talentprobenrechner v{versionNumber} - {filehandler.Filename}";
+                    this.Text = $"DSA Talentprobenrechner v{versionNumber} - {fh.Filename}";
                 }
                 catch
                 {
@@ -329,16 +312,17 @@ namespace DSASkillchecks
             }
         }
 
-        private bool CheckAttributesChanged()
+        private bool AttributesChanged()
         {
-            bool changed = false;
+            List<int> attributes = hero.attr.Values.ToList();
+            List<int> attributesUI = new List<int>();
+
             foreach (NumericUpDown num in entryAttributes)
-            {
-                foreach (var attribute in hero.attr)
-                    if (attribute.Value != num.Value)
-                    { changed = true; }
-            }
-            return changed;
+            { attributesUI.Add(Convert.ToInt32(num.Value)); }
+
+            bool isEqual = Enumerable.SequenceEqual(attributes, attributesUI);
+            if (isEqual) return false;
+            else return true;
         }
 
         private void PerformSkillcheck_Click(object sender, EventArgs e)

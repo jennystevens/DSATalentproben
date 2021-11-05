@@ -60,11 +60,19 @@ namespace DSASkillchecks
             this.cbAttr03 = new System.Windows.Forms.ComboBox();
             this.btnNewTalent = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.KK = new System.Windows.Forms.NumericUpDown();
             this.btnSaveAs = new System.Windows.Forms.Button();
+            this.KO = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.modifier = new System.Windows.Forms.TextBox();
+            this.GE = new System.Windows.Forms.NumericUpDown();
             this.tbHeroName = new System.Windows.Forms.TextBox();
+            this.FF = new System.Windows.Forms.NumericUpDown();
+            this.CH = new System.Windows.Forms.NumericUpDown();
+            this.IN = new System.Windows.Forms.NumericUpDown();
+            this.MU = new System.Windows.Forms.NumericUpDown();
+            this.KL = new System.Windows.Forms.NumericUpDown();
             this.result = new System.Windows.Forms.Label();
             this.btnDeleteTalent = new System.Windows.Forms.Button();
             this.labelCategory = new System.Windows.Forms.Label();
@@ -86,31 +94,23 @@ namespace DSASkillchecks
             this.listBoxTalents = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.KK = new System.Windows.Forms.NumericUpDown();
-            this.KO = new System.Windows.Forms.NumericUpDown();
-            this.GE = new System.Windows.Forms.NumericUpDown();
-            this.FF = new System.Windows.Forms.NumericUpDown();
-            this.MU = new System.Windows.Forms.NumericUpDown();
-            this.IN = new System.Windows.Forms.NumericUpDown();
-            this.CH = new System.Windows.Forms.NumericUpDown();
-            this.KL = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KO)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KL)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diceMod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diceCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.KK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MU)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KL)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -520,6 +520,19 @@ namespace DSASkillchecks
             this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 466);
             this.tableLayoutPanel1.TabIndex = 52;
             // 
+            // KK
+            // 
+            this.KK.Location = new System.Drawing.Point(360, 57);
+            this.KK.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.KK.Name = "KK";
+            this.KK.Size = new System.Drawing.Size(48, 20);
+            this.KK.TabIndex = 61;
+            this.KK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnSaveAs
             // 
             this.btnSaveAs.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -532,6 +545,19 @@ namespace DSASkillchecks
             this.btnSaveAs.Text = "Speichern unter";
             this.btnSaveAs.UseVisualStyleBackColor = true;
             this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
+            // KO
+            // 
+            this.KO.Location = new System.Drawing.Point(309, 57);
+            this.KO.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.KO.Name = "KO";
+            this.KO.Size = new System.Drawing.Size(45, 20);
+            this.KO.TabIndex = 60;
+            this.KO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel1
             // 
@@ -566,6 +592,19 @@ namespace DSASkillchecks
             this.modifier.Text = "0";
             this.modifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // GE
+            // 
+            this.GE.Location = new System.Drawing.Point(258, 57);
+            this.GE.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.GE.Name = "GE";
+            this.GE.Size = new System.Drawing.Size(45, 20);
+            this.GE.TabIndex = 59;
+            this.GE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // tbHeroName
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tbHeroName, 8);
@@ -575,6 +614,71 @@ namespace DSASkillchecks
             this.tbHeroName.TabIndex = 57;
             this.tbHeroName.Text = "Heldenname";
             this.tbHeroName.TextChanged += new System.EventHandler(this.tbHeroName_TextChanged);
+            // 
+            // FF
+            // 
+            this.FF.Location = new System.Drawing.Point(207, 57);
+            this.FF.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.FF.Name = "FF";
+            this.FF.Size = new System.Drawing.Size(45, 20);
+            this.FF.TabIndex = 58;
+            this.FF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CH
+            // 
+            this.CH.Location = new System.Drawing.Point(156, 57);
+            this.CH.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.CH.Name = "CH";
+            this.CH.Size = new System.Drawing.Size(45, 20);
+            this.CH.TabIndex = 55;
+            this.CH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // IN
+            // 
+            this.IN.Location = new System.Drawing.Point(105, 57);
+            this.IN.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.IN.Name = "IN";
+            this.IN.Size = new System.Drawing.Size(45, 20);
+            this.IN.TabIndex = 56;
+            this.IN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MU
+            // 
+            this.MU.Location = new System.Drawing.Point(3, 57);
+            this.MU.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.MU.Name = "MU";
+            this.MU.Size = new System.Drawing.Size(45, 20);
+            this.MU.TabIndex = 57;
+            this.MU.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // KL
+            // 
+            this.KL.Location = new System.Drawing.Point(54, 57);
+            this.KL.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.KL.Name = "KL";
+            this.KL.Size = new System.Drawing.Size(45, 20);
+            this.KL.TabIndex = 54;
+            this.KL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // result
             // 
@@ -802,110 +906,6 @@ namespace DSASkillchecks
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Probenhistorie";
             // 
-            // KK
-            // 
-            this.KK.Location = new System.Drawing.Point(360, 57);
-            this.KK.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.KK.Name = "KK";
-            this.KK.Size = new System.Drawing.Size(48, 20);
-            this.KK.TabIndex = 61;
-            this.KK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // KO
-            // 
-            this.KO.Location = new System.Drawing.Point(309, 57);
-            this.KO.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.KO.Name = "KO";
-            this.KO.Size = new System.Drawing.Size(45, 20);
-            this.KO.TabIndex = 60;
-            this.KO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // GE
-            // 
-            this.GE.Location = new System.Drawing.Point(258, 57);
-            this.GE.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.GE.Name = "GE";
-            this.GE.Size = new System.Drawing.Size(45, 20);
-            this.GE.TabIndex = 59;
-            this.GE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // FF
-            // 
-            this.FF.Location = new System.Drawing.Point(207, 57);
-            this.FF.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.FF.Name = "FF";
-            this.FF.Size = new System.Drawing.Size(45, 20);
-            this.FF.TabIndex = 58;
-            this.FF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // MU
-            // 
-            this.MU.Location = new System.Drawing.Point(3, 57);
-            this.MU.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.MU.Name = "MU";
-            this.MU.Size = new System.Drawing.Size(45, 20);
-            this.MU.TabIndex = 57;
-            this.MU.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // IN
-            // 
-            this.IN.Location = new System.Drawing.Point(105, 57);
-            this.IN.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.IN.Name = "IN";
-            this.IN.Size = new System.Drawing.Size(45, 20);
-            this.IN.TabIndex = 56;
-            this.IN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // CH
-            // 
-            this.CH.Location = new System.Drawing.Point(156, 57);
-            this.CH.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.CH.Name = "CH";
-            this.CH.Size = new System.Drawing.Size(45, 20);
-            this.CH.TabIndex = 55;
-            this.CH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // KL
-            // 
-            this.KL.Location = new System.Drawing.Point(54, 57);
-            this.KL.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.KL.Name = "KL";
-            this.KL.Size = new System.Drawing.Size(45, 20);
-            this.KL.TabIndex = 54;
-            this.KL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.listBoxTalents);
@@ -920,7 +920,7 @@ namespace DSASkillchecks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 512);
+            this.ClientSize = new System.Drawing.Size(1143, 512);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -935,8 +935,16 @@ namespace DSASkillchecks
             this.Load += new System.EventHandler(this.SkillcheckTool_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KO)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KL)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -944,14 +952,6 @@ namespace DSASkillchecks
             ((System.ComponentModel.ISupportInitialize)(this.diceCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.KK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MU)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KL)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 

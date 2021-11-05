@@ -7,9 +7,9 @@ namespace DSASkillchecks
     public class Hero
     {
         public string name { get; set; }
-        public int ini { get; set; }
         public List<Talent> talents;
         public Dictionary<string, int> attr;
+        public Dictionary<string, int> combat;
         public struct skillcheckResult
         {
             public int[] rolls;
@@ -18,12 +18,12 @@ namespace DSASkillchecks
             public int fumbleCounter;
         }
 
-        public Hero(string name, int ini = 0)
+        public Hero(string name)
         {
             this.name = name;
-            this.ini = ini;
             talents = new List<Talent>();
-            attr = new Dictionary<string, int>{{"MU",8},{"KL",8},{"IN",8},{"CH",8},{"FF",8},{"GE",8},{"KO",8},{"KK",8}};
+            attr = new Dictionary<string, int> { { "MU", 8 }, { "KL", 8 }, { "IN", 8 }, { "CH", 8 }, { "FF", 8 }, { "GE", 8 }, { "KO", 8 }, { "KK", 8 } };
+            combat = new Dictionary<string, int> { { "initiative", 0 }, { "ausweichen", 0 }, { "regLE", 0 }, { "regAE", 0 },{"LE",0},{"AE",0 } };
         }
 
         public skillcheckResult RollHouserule(Random r, Talent talent, int mod)
