@@ -14,7 +14,6 @@ using static DSASkillchecks.Filehandler;
  * To do:
  * save/read hero combat values to GUI
  * unit-test for skillcheck method
- * light up corresponding attributes when performing skillcheck
  */
 
 namespace DSASkillchecks
@@ -101,11 +100,8 @@ namespace DSASkillchecks
             // if selection is a talent, load talent
             if (selectionType.Equals(typeof(Talent)))
             {
-                Talent t = ((sender as ListBox).SelectedItem as Talent);
-                selectedTalent = t;
-                LoadTalentInfo(t);
-                labelCategory.Text = categories[t.category].ToUpper();
-                currentCategory = t.category;
+                selectedTalent = ((sender as ListBox).SelectedItem as Talent);
+                LoadTalentInfo(selectedTalent);
                 return;
             }
 
@@ -143,6 +139,8 @@ namespace DSASkillchecks
             btnDeleteTalent.Enabled = true;
             btnApply.Enabled = true;
             performSkillcheck.Enabled = true;
+            foreach (NumericUpDown num in entryAttributes)
+            { num.BackColor = Color.White; }
         }
 
         private void FocusTextbox(TextBox tb)
@@ -161,8 +159,25 @@ namespace DSASkillchecks
             cbAttr01.SelectedItem = t.attr01;
             cbAttr02.SelectedItem = t.attr02;
             cbAttr03.SelectedItem = t.attr03;
+            labelCategory.Text = categories[t.category].ToUpper();
             modifier.Text = "" + 0;
             modifier.Focus();
+
+            //highlight corresponding attributes in GUI
+            Dictionary<string, int> selectedAttributes = new Dictionary<string, int>();
+            selectedAttributes[t.attr01] = hero.attr[t.attr01];
+            selectedAttributes[t.attr02] = hero.attr[t.attr02];
+            selectedAttributes[t.attr03] = hero.attr[t.attr03];
+            selectedAttributes = selectedAttributes.OrderByDescending(u => u.Value).ToDictionary(z => z.Key, y => y.Value);
+            Color[] colors = { Color.LightGreen, Color.Gold, Color.Orange };
+            int i = 0;
+            foreach (KeyValuePair<string, int> kvp in selectedAttributes)
+            {
+                NumericUpDown correspondingNUM = this.Controls.Find(kvp.Key, true).FirstOrDefault() as NumericUpDown;
+                correspondingNUM.BackColor = colors[i];
+                i++;
+            }
+            selectedAttributes.Clear();
         }
 
         private void btnApply_Click(object sender, EventArgs e)

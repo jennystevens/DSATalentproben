@@ -522,6 +522,7 @@ namespace DSASkillchecks
             // 
             // KK
             // 
+            this.KK.BackColor = System.Drawing.Color.Orange;
             this.KK.Location = new System.Drawing.Point(360, 57);
             this.KK.Maximum = new decimal(new int[] {
             30,
@@ -548,6 +549,7 @@ namespace DSASkillchecks
             // 
             // KO
             // 
+            this.KO.BackColor = System.Drawing.SystemColors.Window;
             this.KO.Location = new System.Drawing.Point(309, 57);
             this.KO.Maximum = new decimal(new int[] {
             30,
@@ -594,6 +596,7 @@ namespace DSASkillchecks
             // 
             // GE
             // 
+            this.GE.BackColor = System.Drawing.Color.LightGreen;
             this.GE.Location = new System.Drawing.Point(258, 57);
             this.GE.Maximum = new decimal(new int[] {
             30,
@@ -669,6 +672,7 @@ namespace DSASkillchecks
             // 
             // KL
             // 
+            this.KL.BackColor = System.Drawing.Color.Gold;
             this.KL.Location = new System.Drawing.Point(54, 57);
             this.KL.Maximum = new decimal(new int[] {
             30,
