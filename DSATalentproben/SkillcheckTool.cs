@@ -12,7 +12,9 @@ using static DSASkillchecks.Filehandler;
 
 /*
  * To do:
- * save/read hero combat values to GUI
+ * add weapons stats
+ * make regLE, regAE and initiative interactive
+ * catch edited when combat stats are changed
  * unit-test for skillcheck method
  */
 
@@ -25,9 +27,10 @@ namespace DSASkillchecks
         bool edited = false;
         string[] categories = { "waffen", "körperlich", "gesellschaft", "natur", "wissen", "sprachen", "handwerk" }; 
         int currentCategory;
-        string versionNumber = "1.3";
+        string versionNumber = "1.4";
         Hero hero = new Hero("Heldenname");
         NumericUpDown[] entryAttributes;
+        TextBox[] entryCombat;
         Filehandler fh = new Filehandler();
 
         public SkillcheckTool()
@@ -39,6 +42,7 @@ namespace DSASkillchecks
         {
             versionInfo.Text = $"*** v{versionNumber} 2021 von Ofenkatze (mail@jennystevens.de) ***";
             entryAttributes = new NumericUpDown[] { MU, KL, IN, CH, FF, GE, KO, KK };
+            entryCombat = new TextBox[] { initiative, ausweichen, behinderung, regLE, regAE, LE, AE };
             InitializeInputFields(hero);
             currentCategory = 0;
             listBoxTalents.SelectedIndex = 0;
@@ -47,16 +51,26 @@ namespace DSASkillchecks
         private void InitializeInputFields(Hero hero)
         {
             tbHeroName.Text = hero.name;
-            LoadAttributesToTB();
+            LoadAttributesToNum();
+            LoadCombatToTB();
             LoadTalentsToListbox();
         }
 
-        private void LoadAttributesToTB()
+        private void LoadAttributesToNum()
         {
-            foreach (var attribute in hero.attr)
+            foreach (KeyValuePair<string, int> attribute in hero.attr)
             {
                 NumericUpDown correspondingNUM = this.Controls.Find(attribute.Key, true).FirstOrDefault() as NumericUpDown;
                 correspondingNUM.Value = attribute.Value;
+            }
+        }
+
+        private void LoadCombatToTB()
+        {
+            foreach (KeyValuePair<string, string> element in hero.combat)
+            {
+                TextBox correspondingTB = this.Controls.Find(element.Key, true).FirstOrDefault() as TextBox;
+                correspondingTB.Text = element.Value;
             }
         }
 
@@ -281,6 +295,10 @@ namespace DSASkillchecks
             {
                 hero.attr[num.Name] = Convert.ToInt32(num.Value);
             }
+            foreach (TextBox tb in entryCombat)
+            {
+                hero.combat[tb.Name] = tb.Text;
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -309,8 +327,10 @@ namespace DSASkillchecks
             {
                 try
                 {
-                    hero = fh.LoadHeroFile(openDialog.FileName, hero);
-                    LoadAttributesToTB();
+                    fh.Filename = openDialog.FileName;
+                    hero = fh.LoadHeroFile(fh.Filename, hero);
+                    LoadAttributesToNum();
+                    LoadCombatToTB();
                     LoadTalentsToListbox();
                     currentCategory = 0;
                     listBoxTalents.SelectedIndex = 0;

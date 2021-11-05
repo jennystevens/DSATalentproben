@@ -95,6 +95,22 @@ namespace DSASkillchecks
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.LE = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.AE = new System.Windows.Forms.TextBox();
+            this.initiative = new System.Windows.Forms.TextBox();
+            this.ausweichen = new System.Windows.Forms.TextBox();
+            this.behinderung = new System.Windows.Forms.TextBox();
+            this.regLE = new System.Windows.Forms.TextBox();
+            this.regAE = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KO)).BeginInit();
@@ -112,6 +128,7 @@ namespace DSASkillchecks
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelMU
@@ -740,9 +757,9 @@ namespace DSASkillchecks
             this.versionInfo.ForeColor = System.Drawing.Color.Gray;
             this.versionInfo.Location = new System.Drawing.Point(9, 481);
             this.versionInfo.Name = "versionInfo";
-            this.versionInfo.Size = new System.Drawing.Size(1087, 25);
+            this.versionInfo.Size = new System.Drawing.Size(1325, 25);
             this.versionInfo.TabIndex = 55;
-            this.versionInfo.Text = "*** v04 2021 von Ofenkatze (mail@jennystevens.de) ***";
+            this.versionInfo.Text = "*** 2021 von Ofenkatze (mail@jennystevens.de) ***";
             this.versionInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
@@ -755,9 +772,9 @@ namespace DSASkillchecks
             this.groupBox1.Controls.Add(this.btn_d6);
             this.groupBox1.Controls.Add(this.diceMod);
             this.groupBox1.Controls.Add(this.diceCount);
-            this.groupBox1.Location = new System.Drawing.Point(977, 12);
+            this.groupBox1.Location = new System.Drawing.Point(1183, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(150, 466);
+            this.groupBox1.Size = new System.Drawing.Size(151, 466);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Würfelbecher";
@@ -920,11 +937,180 @@ namespace DSASkillchecks
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Talente";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(977, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 466);
+            this.groupBox4.TabIndex = 63;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Kampf";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Initiative";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Ausweichen";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Behinderung";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Reg LE";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 110);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Reg AE";
+            // 
+            // LE
+            // 
+            this.LE.Location = new System.Drawing.Point(103, 133);
+            this.LE.Name = "LE";
+            this.LE.Size = new System.Drawing.Size(94, 20);
+            this.LE.TabIndex = 10;
+            this.LE.Text = "40";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.regAE, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.regLE, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.behinderung, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.ausweichen, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.initiative, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.AE, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.LE, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label7, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label8, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label9, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label10, 0, 6);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(977, 31);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 7;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 185);
+            this.tableLayoutPanel2.TabIndex = 64;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 136);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "LE";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 164);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(21, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "AE";
+            // 
+            // AE
+            // 
+            this.AE.Location = new System.Drawing.Point(103, 159);
+            this.AE.Name = "AE";
+            this.AE.Size = new System.Drawing.Size(94, 20);
+            this.AE.TabIndex = 14;
+            this.AE.Text = "40";
+            // 
+            // initiative
+            // 
+            this.initiative.Location = new System.Drawing.Point(103, 3);
+            this.initiative.Name = "initiative";
+            this.initiative.Size = new System.Drawing.Size(94, 20);
+            this.initiative.TabIndex = 15;
+            this.initiative.Text = "W6 + 10";
+            // 
+            // ausweichen
+            // 
+            this.ausweichen.Location = new System.Drawing.Point(103, 29);
+            this.ausweichen.Name = "ausweichen";
+            this.ausweichen.Size = new System.Drawing.Size(94, 20);
+            this.ausweichen.TabIndex = 16;
+            this.ausweichen.Text = "12";
+            // 
+            // behinderung
+            // 
+            this.behinderung.Location = new System.Drawing.Point(103, 55);
+            this.behinderung.Name = "behinderung";
+            this.behinderung.Size = new System.Drawing.Size(94, 20);
+            this.behinderung.TabIndex = 17;
+            this.behinderung.Text = "2";
+            // 
+            // regLE
+            // 
+            this.regLE.Location = new System.Drawing.Point(103, 81);
+            this.regLE.Name = "regLE";
+            this.regLE.Size = new System.Drawing.Size(94, 20);
+            this.regLE.TabIndex = 18;
+            this.regLE.Text = "W6 + 2";
+            // 
+            // regAE
+            // 
+            this.regAE.Location = new System.Drawing.Point(103, 107);
+            this.regAE.Name = "regAE";
+            this.regAE.Size = new System.Drawing.Size(94, 20);
+            this.regAE.TabIndex = 19;
+            this.regAE.Text = "W6 + 4";
+            // 
             // SkillcheckTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 512);
+            this.ClientSize = new System.Drawing.Size(1346, 512);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -957,6 +1143,8 @@ namespace DSASkillchecks
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1026,6 +1214,22 @@ namespace DSASkillchecks
         private NumericUpDown IN;
         private NumericUpDown CH;
         private NumericUpDown KL;
+        private GroupBox groupBox4;
+        private Label label4;
+        private Label label2;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private TextBox LE;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label label3;
+        private Label label10;
+        private TextBox AE;
+        private TextBox regAE;
+        private TextBox regLE;
+        private TextBox behinderung;
+        private TextBox ausweichen;
+        private TextBox initiative;
     }
 }
 

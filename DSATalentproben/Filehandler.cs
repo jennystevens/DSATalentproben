@@ -28,7 +28,8 @@ namespace DSASkillchecks
             XElement heroStats =
                 new XElement("Hero",
                     new XElement("heroname", hero.name),
-                    new XElement("attributes", hero.attr.Select(kv => new XElement(kv.Key, kv.Value)))
+                    new XElement("attributes", hero.attr.Select(kv => new XElement(kv.Key, kv.Value))),
+                    new XElement("combat", hero.combat.Select(kv => new XElement(kv.Key, kv.Value)))
                 );
             XElement Xtalents = GatherTalents(hero.talents);
             heroStats.Add(Xtalents);
@@ -58,6 +59,7 @@ namespace DSASkillchecks
             XElement heroStats = XElement.Load(path);
             hero.name = LoadName(heroStats);
             hero.attr = LoadAttributes(heroStats);
+            hero.combat = LoadCombat(heroStats);
             hero.talents = LoadTalents(heroStats);
             return hero;
         }
@@ -76,6 +78,14 @@ namespace DSASkillchecks
                                          select descendant;
             Dictionary<string, int> attributes = attr.Elements().ToDictionary(k => k.Name.ToString(), v => Convert.ToInt32(v.Value));
             return attributes;
+        }
+
+        Dictionary<string, string> LoadCombat(XElement heroStats)
+        {
+            IEnumerable<XElement> cmbt = from descendant in heroStats.Descendants("combat")
+                                         select descendant;
+            Dictionary<string, string> combat = cmbt.Elements().ToDictionary(k => k.Name.ToString(), v => v.Value.ToString());
+            return combat;
         }
 
         List<Talent> LoadTalents(XElement heroStats)
