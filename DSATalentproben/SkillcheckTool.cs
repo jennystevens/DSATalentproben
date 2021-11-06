@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.IO;
-using System.Xml.Serialization;
-using System.Diagnostics;
-using System.Xml.Linq;
 using static DSASkillchecks.Hero;
-using static DSASkillchecks.Filehandler;
+using static DSASkillchecks.Die;
 
 /*
  * To do:
  * add weapons stats
- * make regLE, regAE and initiative interactive
- * catch edited when combat stats are changed
- * unit-test for skillcheck method
+ * add action counter
+ * catch file edited when combat stats are changed
+ * unit-test for rolling methods
  */
 
 namespace DSASkillchecks
@@ -30,7 +26,7 @@ namespace DSASkillchecks
         string versionNumber = "1.4";
         Hero hero = new Hero("Heldenname");
         NumericUpDown[] entryAttributes;
-        TextBox[] entryCombat;
+        NumericUpDown[] entryCombat;
         Filehandler fh = new Filehandler();
 
         public SkillcheckTool()
@@ -42,7 +38,7 @@ namespace DSASkillchecks
         {
             versionInfo.Text = $"*** v{versionNumber} 2021 von Ofenkatze (mail@jennystevens.de) ***";
             entryAttributes = new NumericUpDown[] { MU, KL, IN, CH, FF, GE, KO, KK };
-            entryCombat = new TextBox[] { initiative, ausweichen, behinderung, regLE, regAE, LE, AE };
+            entryCombat = new NumericUpDown[] { initiative, ausweichen, behinderung, regLE, regAE, LE, AE };
             InitializeInputFields(hero);
             currentCategory = 0;
             listBoxTalents.SelectedIndex = 0;
@@ -52,7 +48,7 @@ namespace DSASkillchecks
         {
             tbHeroName.Text = hero.name;
             LoadAttributesToNum();
-            LoadCombatToTB();
+            LoadCombatToNum();
             LoadTalentsToListbox();
         }
 
@@ -65,12 +61,12 @@ namespace DSASkillchecks
             }
         }
 
-        private void LoadCombatToTB()
+        private void LoadCombatToNum()
         {
-            foreach (KeyValuePair<string, string> element in hero.combat)
+            foreach (KeyValuePair<string, int> stat in hero.combat)
             {
-                TextBox correspondingTB = this.Controls.Find(element.Key, true).FirstOrDefault() as TextBox;
-                correspondingTB.Text = element.Value;
+                NumericUpDown correspondingNUM = this.Controls.Find(stat.Key, true).FirstOrDefault() as NumericUpDown;
+                correspondingNUM.Value = stat.Value;
             }
         }
 
@@ -295,9 +291,9 @@ namespace DSASkillchecks
             {
                 hero.attr[num.Name] = Convert.ToInt32(num.Value);
             }
-            foreach (TextBox tb in entryCombat)
+            foreach (NumericUpDown num in entryCombat)
             {
-                hero.combat[tb.Name] = tb.Text;
+                hero.combat[num.Name] = Convert.ToInt32(num.Value);
             }
         }
 
@@ -330,7 +326,7 @@ namespace DSASkillchecks
                     fh.Filename = openDialog.FileName;
                     hero = fh.LoadHeroFile(fh.Filename, hero);
                     LoadAttributesToNum();
-                    LoadCombatToTB();
+                    LoadCombatToNum();
                     LoadTalentsToListbox();
                     currentCategory = 0;
                     listBoxTalents.SelectedIndex = 0;
@@ -434,45 +430,6 @@ namespace DSASkillchecks
             listBoxHistory.SetSelected(listBoxHistory.Items.Count - 1, false);
         }
 
-        private void btn_d6_Click(object sender, EventArgs e)
-        {
-            int kindOfDie = 6;
-            RollDie(kindOfDie);
-        }
-
-        private void btn_d20_Click(object sender, EventArgs e)
-        {
-            int kindOfDie = 20;
-            RollDie(kindOfDie);
-        }
-
-        private void RollDie(int kindOfDie)
-        {
-            int amount = Convert.ToInt32(diceCount.Value);
-            int mod = Convert.ToInt32(diceMod.Value);
-            int[] rolls = new int[amount];
-            string results = String.Empty;
-            int accumulated = 0;
-
-            for (int i = 0; i < amount; i++)
-            {
-                rolls[i] = r.Next(1, kindOfDie + 1);
-                accumulated += rolls[i];
-                if (i == 0)
-                { results = "" + rolls[i]; }
-                else
-                { results += (", " + rolls[i]); }
-            }
-
-            accumulated += mod;
-            string rolled = "" + amount + "W" + kindOfDie;
-            string history = "" + rolled + "   " + results + "   (" + accumulated +")";
-            output.Items.Add(history);
-            outputAccumulated.Text = "" + accumulated;
-            outputDiceKind.Text = "" + rolled;
-            outputRolls.Text = results;
-        }
-
         private void tbHeroName_TextChanged(object sender, EventArgs e)
         {
             hero.name = tbHeroName.Text;
@@ -520,6 +477,75 @@ namespace DSASkillchecks
             {
                 btnApply.PerformClick();
             }
+        }
+
+        private void btn_d6_Click(object sender, EventArgs e)
+        {
+            int amount = Convert.ToInt32(diceCount.Value);
+            int mod = Convert.ToInt32(diceMod.Value);
+            Die die = new Die(6);
+            rollResult result = die.Roll(r, amount, mod);
+            PrintRollResults(die, result);
+        }
+
+        private void btn_d20_Click(object sender, EventArgs e)
+        {
+            int amount = Convert.ToInt32(diceCount.Value);
+            int mod = Convert.ToInt32(diceMod.Value);
+            Die die = new Die(20);
+            rollResult result = die.Roll(r, amount, mod);
+            PrintRollResults(die, result);
+        }
+
+        private void rollIni_Click(object sender, EventArgs e)
+        {
+            int amount = Convert.ToInt32(iniCount.Value);
+            int mod = Convert.ToInt32(initiative.Value);
+            Die die = new Die(6);
+            rollResult result = die.Roll(r, amount, mod);
+            PrintRollResults(die, result);
+            iniTmp.Text = result.accumulated.ToString();
+        }
+
+        private void rollRegLE_Click(object sender, EventArgs e)
+        {
+            int amount = Convert.ToInt32(regLECount.Value);
+            int mod = Convert.ToInt32(regLE.Value);
+            Die die = new Die(6);
+            rollResult result = die.Roll(r, amount, mod);
+            output.Items.Add("Reg LE");
+            PrintRollResults(die, result);
+        }
+
+        private void rollRegAE_Click(object sender, EventArgs e)
+        {
+            int amount = Convert.ToInt32(regAECount.Value);
+            int mod = Convert.ToInt32(regAE.Value);
+            Die die = new Die(6);
+            output.Items.Add("Reg AE");
+            rollResult result = die.Roll(r, amount, mod);
+            PrintRollResults(die, result);
+        }
+
+        private void PrintRollResults(Die die, rollResult result)
+        {
+            // output number and kind of dice rolled. Example string: "3 W6", "1W 20"
+            string rolled = $"{result.rolls.Count} W{die.type} +{result.mod}";
+            outputDieType.Text = rolled;
+
+            // output roll values. Example string: "2, 4", "20, 12, 9"
+            string results = string.Join<int>(", ", result.rolls);
+            outputRolls.Text = results;
+
+            // output accumulated roll values
+            string acc = result.accumulated.ToString();
+            outputAccumulated.Text = result.accumulated.ToString();
+
+            // output to history
+            output.Items.Add($"{rolled,-10} = {acc,-5} {results}");
+            output.Items.Add($"");
+            output.SelectedIndex = output.Items.Count - 1;
+            output.SetSelected(output.Items.Count - 1, false);
         }
     }
 }

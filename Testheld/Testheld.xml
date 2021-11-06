@@ -14,11 +14,11 @@ Testheld
     <KK>12</KK>
   </attributes>
   <combat>
-    <initiative>W6 + 12</initiative>
+    <initiative>12</initiative>
     <ausweichen>12</ausweichen>
     <behinderung>2</behinderung>
-    <regLE>W6 + 2</regLE>
-    <regAE>W6 + 3</regAE>
+    <regLE>2</regLE>
+    <regAE>3</regAE>
     <LE>60</LE>
     <AE>40</AE>
   </combat>

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace DSASkillchecks
 {
@@ -80,11 +76,11 @@ namespace DSASkillchecks
             return attributes;
         }
 
-        Dictionary<string, string> LoadCombat(XElement heroStats)
+        Dictionary<string, int> LoadCombat(XElement heroStats)
         {
             IEnumerable<XElement> cmbt = from descendant in heroStats.Descendants("combat")
                                          select descendant;
-            Dictionary<string, string> combat = cmbt.Elements().ToDictionary(k => k.Name.ToString(), v => v.Value.ToString());
+            Dictionary<string, int> combat = cmbt.Elements().ToDictionary(k => k.Name.ToString(), v => Convert.ToInt32(v.Value));
             return combat;
         }
 

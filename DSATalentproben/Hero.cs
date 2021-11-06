@@ -9,7 +9,7 @@ namespace DSASkillchecks
         public string name { get; set; }
         public List<Talent> talents;
         public Dictionary<string, int> attr;
-        public Dictionary<string, string> combat;
+        public Dictionary<string, int> combat;
         public struct skillcheckResult
         {
             public int[] rolls;
@@ -23,7 +23,7 @@ namespace DSASkillchecks
             this.name = name;
             talents = new List<Talent>();
             attr = new Dictionary<string, int> { { "MU", 8 }, { "KL", 8 }, { "IN", 8 }, { "CH", 8 }, { "FF", 8 }, { "GE", 8 }, { "KO", 8 }, { "KK", 8 } };
-            combat = new Dictionary<string, string> { { "initiative", "W6 + 0" }, { "ausweichen", "0" }, { "behinderung", "0"}, { "regLE", "W6 + 0" }, { "regAE", "W6 + 0" }, { "LE", "0" }, { "AE", "0" } };
+            combat = new Dictionary<string, int> { { "initiative", 8 }, { "ausweichen", 8 }, { "behinderung", 0 }, { "regLE", 3 }, { "regAE", 3 }, { "LE", 40 }, { "AE", 40 } };
         }
 
         public skillcheckResult RollHouserule(Random r, Talent talent, int mod)
