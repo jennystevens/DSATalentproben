@@ -17,8 +17,6 @@ Testheld
     <initiative>12</initiative>
     <ausweichen>12</ausweichen>
     <behinderung>2</behinderung>
-    <regLE>2</regLE>
-    <regAE>3</regAE>
     <LE>60</LE>
     <AE>40</AE>
   </combat>

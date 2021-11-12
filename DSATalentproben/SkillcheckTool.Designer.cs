@@ -99,28 +99,18 @@ namespace DSASkillchecks
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.iniTmp = new System.Windows.Forms.TextBox();
             this.ausweichen = new System.Windows.Forms.NumericUpDown();
             this.initiative = new System.Windows.Forms.NumericUpDown();
-            this.regAECount = new System.Windows.Forms.NumericUpDown();
-            this.regLECount = new System.Windows.Forms.NumericUpDown();
             this.iniCount = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.rollIni = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.behinderung = new System.Windows.Forms.NumericUpDown();
-            this.regLE = new System.Windows.Forms.NumericUpDown();
-            this.regAE = new System.Windows.Forms.NumericUpDown();
             this.LE = new System.Windows.Forms.NumericUpDown();
             this.AE = new System.Windows.Forms.NumericUpDown();
-            this.iniTmp = new System.Windows.Forms.TextBox();
-            this.rollRegLE = new System.Windows.Forms.Button();
-            this.rollRegAE = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KO)).BeginInit();
@@ -141,12 +131,8 @@ namespace DSASkillchecks
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ausweichen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.initiative)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regAECount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regLECount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iniCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behinderung)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regLE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regAE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AE)).BeginInit();
             this.SuspendLayout();
@@ -997,26 +983,6 @@ namespace DSASkillchecks
             this.label7.TabIndex = 3;
             this.label7.Text = "Behinderung";
             // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 91);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Reg LE";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 119);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Reg AE";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 6;
@@ -1026,30 +992,20 @@ namespace DSASkillchecks
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel2.Controls.Add(this.rollRegAE, 5, 4);
-            this.tableLayoutPanel2.Controls.Add(this.rollRegLE, 5, 3);
             this.tableLayoutPanel2.Controls.Add(this.iniTmp, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ausweichen, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.initiative, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.regAECount, 2, 4);
-            this.tableLayoutPanel2.Controls.Add(this.regLECount, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.iniCount, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label7, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label8, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label9, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.label10, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.rollIni, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.label12, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label11, 3, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label13, 3, 4);
             this.tableLayoutPanel2.Controls.Add(this.behinderung, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.regLE, 4, 3);
-            this.tableLayoutPanel2.Controls.Add(this.regAE, 4, 4);
-            this.tableLayoutPanel2.Controls.Add(this.LE, 2, 5);
-            this.tableLayoutPanel2.Controls.Add(this.AE, 2, 6);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label10, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.LE, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.AE, 2, 4);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(983, 31);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 7;
@@ -1062,6 +1018,16 @@ namespace DSASkillchecks
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(321, 199);
             this.tableLayoutPanel2.TabIndex = 64;
+            // 
+            // iniTmp
+            // 
+            this.iniTmp.Enabled = false;
+            this.iniTmp.Location = new System.Drawing.Point(83, 3);
+            this.iniTmp.Name = "iniTmp";
+            this.iniTmp.Size = new System.Drawing.Size(28, 20);
+            this.iniTmp.TabIndex = 0;
+            this.iniTmp.Text = "0";
+            this.iniTmp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ausweichen
             // 
@@ -1089,56 +1055,6 @@ namespace DSASkillchecks
             this.initiative.TabIndex = 23;
             this.initiative.Value = new decimal(new int[] {
             100,
-            0,
-            0,
-            0});
-            // 
-            // regAECount
-            // 
-            this.regAECount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.regAECount.Location = new System.Drawing.Point(117, 115);
-            this.regAECount.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.regAECount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.regAECount.Name = "regAECount";
-            this.regAECount.Size = new System.Drawing.Size(44, 20);
-            this.regAECount.TabIndex = 2;
-            this.regAECount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // regLECount
-            // 
-            this.regLECount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.regLECount.Location = new System.Drawing.Point(117, 87);
-            this.regLECount.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.regLECount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.regLECount.Name = "regLECount";
-            this.regLECount.Size = new System.Drawing.Size(44, 20);
-            this.regLECount.TabIndex = 1;
-            this.regLECount.Value = new decimal(new int[] {
-            1,
             0,
             0,
             0});
@@ -1172,7 +1088,7 @@ namespace DSASkillchecks
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 147);
+            this.label3.Location = new System.Drawing.Point(3, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(20, 13);
             this.label3.TabIndex = 12;
@@ -1182,7 +1098,7 @@ namespace DSASkillchecks
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 177);
+            this.label10.Location = new System.Drawing.Point(3, 119);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(21, 13);
             this.label10.TabIndex = 13;
@@ -1212,26 +1128,6 @@ namespace DSASkillchecks
             this.label12.TabIndex = 21;
             this.label12.Text = "W6 +";
             // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(167, 91);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 13);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "W6 +";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(167, 119);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(33, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "W6 +";
-            // 
             // behinderung
             // 
             this.behinderung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1247,42 +1143,12 @@ namespace DSASkillchecks
             0,
             0});
             // 
-            // regLE
-            // 
-            this.regLE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.regLE.Location = new System.Drawing.Point(209, 87);
-            this.regLE.Name = "regLE";
-            this.regLE.Size = new System.Drawing.Size(44, 20);
-            this.regLE.TabIndex = 26;
-            this.regLE.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // regAE
-            // 
-            this.regAE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.regAE.Location = new System.Drawing.Point(209, 115);
-            this.regAE.Name = "regAE";
-            this.regAE.Size = new System.Drawing.Size(44, 20);
-            this.regAE.TabIndex = 27;
-            this.regAE.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
             // LE
             // 
             this.LE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LE.Location = new System.Drawing.Point(117, 143);
+            this.LE.Location = new System.Drawing.Point(117, 87);
             this.LE.Name = "LE";
             this.LE.Size = new System.Drawing.Size(44, 20);
             this.LE.TabIndex = 28;
@@ -1297,7 +1163,7 @@ namespace DSASkillchecks
             this.AE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AE.Location = new System.Drawing.Point(117, 171);
+            this.AE.Location = new System.Drawing.Point(117, 115);
             this.AE.Name = "AE";
             this.AE.Size = new System.Drawing.Size(44, 20);
             this.AE.TabIndex = 29;
@@ -1306,44 +1172,6 @@ namespace DSASkillchecks
             0,
             0,
             0});
-            // 
-            // iniTmp
-            // 
-            this.iniTmp.Enabled = false;
-            this.iniTmp.Location = new System.Drawing.Point(83, 3);
-            this.iniTmp.Name = "iniTmp";
-            this.iniTmp.Size = new System.Drawing.Size(28, 20);
-            this.iniTmp.TabIndex = 0;
-            this.iniTmp.Text = "0";
-            this.iniTmp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rollRegLE
-            // 
-            this.rollRegLE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rollRegLE.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.rollRegLE.Location = new System.Drawing.Point(259, 87);
-            this.rollRegLE.Name = "rollRegLE";
-            this.rollRegLE.Size = new System.Drawing.Size(61, 22);
-            this.rollRegLE.TabIndex = 1;
-            this.rollRegLE.Text = "würfeln";
-            this.rollRegLE.UseVisualStyleBackColor = false;
-            this.rollRegLE.Click += new System.EventHandler(this.rollRegLE_Click);
-            // 
-            // rollRegAE
-            // 
-            this.rollRegAE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rollRegAE.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.rollRegAE.Location = new System.Drawing.Point(259, 115);
-            this.rollRegAE.Name = "rollRegAE";
-            this.rollRegAE.Size = new System.Drawing.Size(61, 22);
-            this.rollRegAE.TabIndex = 1;
-            this.rollRegAE.Text = "würfeln";
-            this.rollRegAE.UseVisualStyleBackColor = false;
-            this.rollRegAE.Click += new System.EventHandler(this.rollRegAE_Click);
             // 
             // SkillcheckTool
             // 
@@ -1388,12 +1216,8 @@ namespace DSASkillchecks
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ausweichen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.initiative)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regAECount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regLECount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iniCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behinderung)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regLE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.regAE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AE)).EndInit();
             this.ResumeLayout(false);
@@ -1468,29 +1292,19 @@ namespace DSASkillchecks
         private GroupBox groupBox4;
         private Label label4;
         private Label label2;
-        private Label label9;
-        private Label label8;
         private Label label7;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label3;
         private Label label10;
         private Button rollIni;
-        private Label label13;
         private Label label12;
-        private Label label11;
-        private NumericUpDown regAECount;
-        private NumericUpDown regLECount;
         private NumericUpDown iniCount;
         private NumericUpDown ausweichen;
         private NumericUpDown initiative;
         private NumericUpDown behinderung;
-        private NumericUpDown regLE;
-        private NumericUpDown regAE;
         private NumericUpDown LE;
         private NumericUpDown AE;
         private TextBox iniTmp;
-        private Button rollRegAE;
-        private Button rollRegLE;
     }
 }
 

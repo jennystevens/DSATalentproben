@@ -38,7 +38,7 @@ namespace DSASkillchecks
         {
             versionInfo.Text = $"*** v{versionNumber} 2021 von Ofenkatze (mail@jennystevens.de) ***";
             entryAttributes = new NumericUpDown[] { MU, KL, IN, CH, FF, GE, KO, KK };
-            entryCombat = new NumericUpDown[] { initiative, ausweichen, behinderung, regLE, regAE, LE, AE };
+            entryCombat = new NumericUpDown[] { initiative, ausweichen, behinderung, LE, AE };
             InitializeInputFields(hero);
             currentCategory = 0;
             listBoxTalents.SelectedIndex = 0;
@@ -505,26 +505,6 @@ namespace DSASkillchecks
             rollResult result = die.Roll(r, amount, mod);
             PrintRollResults(die, result);
             iniTmp.Text = result.accumulated.ToString();
-        }
-
-        private void rollRegLE_Click(object sender, EventArgs e)
-        {
-            int amount = Convert.ToInt32(regLECount.Value);
-            int mod = Convert.ToInt32(regLE.Value);
-            Die die = new Die(6);
-            rollResult result = die.Roll(r, amount, mod);
-            output.Items.Add("Reg LE");
-            PrintRollResults(die, result);
-        }
-
-        private void rollRegAE_Click(object sender, EventArgs e)
-        {
-            int amount = Convert.ToInt32(regAECount.Value);
-            int mod = Convert.ToInt32(regAE.Value);
-            Die die = new Die(6);
-            output.Items.Add("Reg AE");
-            rollResult result = die.Roll(r, amount, mod);
-            PrintRollResults(die, result);
         }
 
         private void PrintRollResults(Die die, rollResult result)
