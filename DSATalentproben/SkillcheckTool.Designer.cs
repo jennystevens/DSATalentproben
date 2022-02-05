@@ -79,17 +79,18 @@ namespace DSASkillchecks
             this.listBoxHistory = new System.Windows.Forms.ListBox();
             this.versionInfo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.d20Mod = new System.Windows.Forms.NumericUpDown();
+            this.d20Count = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.outputDieType = new System.Windows.Forms.Label();
             this.outputAccumulated = new System.Windows.Forms.Label();
             this.outputRolls = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.output = new System.Windows.Forms.ListBox();
             this.btn_d20 = new System.Windows.Forms.Button();
             this.btn_d6 = new System.Windows.Forms.Button();
-            this.diceMod = new System.Windows.Forms.NumericUpDown();
-            this.diceCount = new System.Windows.Forms.NumericUpDown();
+            this.output = new System.Windows.Forms.ListBox();
+            this.d6Mod = new System.Windows.Forms.NumericUpDown();
+            this.d6Count = new System.Windows.Forms.NumericUpDown();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.listBoxTalents = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -104,13 +105,17 @@ namespace DSASkillchecks
             this.ausweichen = new System.Windows.Forms.NumericUpDown();
             this.initiative = new System.Windows.Forms.NumericUpDown();
             this.iniCount = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.rollIni = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.behinderung = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.LE = new System.Windows.Forms.NumericUpDown();
             this.AE = new System.Windows.Forms.NumericUpDown();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ruleVersionSelect = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KO)).BeginInit();
@@ -122,9 +127,11 @@ namespace DSASkillchecks
             ((System.ComponentModel.ISupportInitialize)(this.MU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KL)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.d20Mod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.d20Count)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.diceMod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diceCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.d6Mod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.d6Count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -135,6 +142,7 @@ namespace DSASkillchecks
             ((System.ComponentModel.ISupportInitialize)(this.behinderung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AE)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelMU
@@ -519,6 +527,7 @@ namespace DSASkillchecks
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 0, 16);
             this.tableLayoutPanel1.Controls.Add(this.btnLoad, 6, 16);
             this.tableLayoutPanel1.Controls.Add(this.labelCategory, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ruleVersionSelect, 5, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 17;
@@ -633,10 +642,10 @@ namespace DSASkillchecks
             // 
             // tbHeroName
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tbHeroName, 8);
+            this.tableLayoutPanel1.SetColumnSpan(this.tbHeroName, 5);
             this.tbHeroName.Location = new System.Drawing.Point(3, 3);
             this.tbHeroName.Name = "tbHeroName";
-            this.tbHeroName.Size = new System.Drawing.Size(405, 20);
+            this.tbHeroName.Size = new System.Drawing.Size(249, 20);
             this.tbHeroName.TabIndex = 57;
             this.tbHeroName.Text = "Heldenname";
             this.tbHeroName.TextChanged += new System.EventHandler(this.tbHeroName_TextChanged);
@@ -755,7 +764,7 @@ namespace DSASkillchecks
             this.listBoxHistory.FormattingEnabled = true;
             this.listBoxHistory.Location = new System.Drawing.Point(6, 19);
             this.listBoxHistory.Name = "listBoxHistory";
-            this.listBoxHistory.Size = new System.Drawing.Size(252, 433);
+            this.listBoxHistory.Size = new System.Drawing.Size(252, 225);
             this.listBoxHistory.TabIndex = 53;
             // 
             // versionInfo
@@ -763,27 +772,60 @@ namespace DSASkillchecks
             this.versionInfo.ForeColor = System.Drawing.Color.Gray;
             this.versionInfo.Location = new System.Drawing.Point(9, 481);
             this.versionInfo.Name = "versionInfo";
-            this.versionInfo.Size = new System.Drawing.Size(1459, 25);
+            this.versionInfo.Size = new System.Drawing.Size(1342, 25);
             this.versionInfo.TabIndex = 55;
             this.versionInfo.Text = "*** 2021 von Ofenkatze (mail@jennystevens.de) ***";
             this.versionInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.d20Mod);
+            this.groupBox1.Controls.Add(this.d20Count);
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.output);
             this.groupBox1.Controls.Add(this.btn_d20);
             this.groupBox1.Controls.Add(this.btn_d6);
-            this.groupBox1.Controls.Add(this.diceMod);
-            this.groupBox1.Controls.Add(this.diceCount);
-            this.groupBox1.Location = new System.Drawing.Point(1317, 12);
+            this.groupBox1.Controls.Add(this.output);
+            this.groupBox1.Controls.Add(this.d6Mod);
+            this.groupBox1.Controls.Add(this.d6Count);
+            this.groupBox1.Location = new System.Drawing.Point(977, 180);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(164, 466);
+            this.groupBox1.Size = new System.Drawing.Size(374, 147);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Würfelbecher";
+            // 
+            // d20Mod
+            // 
+            this.d20Mod.Location = new System.Drawing.Point(80, 103);
+            this.d20Mod.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.d20Mod.Name = "d20Mod";
+            this.d20Mod.Size = new System.Drawing.Size(64, 20);
+            this.d20Mod.TabIndex = 13;
+            this.d20Mod.Tag = "";
+            this.d20Mod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // d20Count
+            // 
+            this.d20Count.Location = new System.Drawing.Point(80, 18);
+            this.d20Count.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.d20Count.Name = "d20Count";
+            this.d20Count.Size = new System.Drawing.Size(64, 20);
+            this.d20Count.TabIndex = 12;
+            this.d20Count.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.d20Count.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // flowLayoutPanel1
             // 
@@ -793,17 +835,17 @@ namespace DSASkillchecks
             this.flowLayoutPanel1.Controls.Add(this.outputAccumulated);
             this.flowLayoutPanel1.Controls.Add(this.outputRolls);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 132);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(153, 18);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(152, 86);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(60, 108);
             this.flowLayoutPanel1.TabIndex = 11;
             // 
             // outputDieType
             // 
-            this.outputDieType.Location = new System.Drawing.Point(3, 0);
+            this.outputDieType.Location = new System.Drawing.Point(0, 0);
+            this.outputDieType.Margin = new System.Windows.Forms.Padding(0);
             this.outputDieType.Name = "outputDieType";
-            this.outputDieType.Padding = new System.Windows.Forms.Padding(2);
-            this.outputDieType.Size = new System.Drawing.Size(141, 23);
+            this.outputDieType.Size = new System.Drawing.Size(59, 23);
             this.outputDieType.TabIndex = 0;
             this.outputDieType.Text = "3 d6";
             this.outputDieType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -816,7 +858,7 @@ namespace DSASkillchecks
             this.outputAccumulated.Location = new System.Drawing.Point(3, 23);
             this.outputAccumulated.Name = "outputAccumulated";
             this.outputAccumulated.Padding = new System.Windows.Forms.Padding(6);
-            this.outputAccumulated.Size = new System.Drawing.Size(141, 38);
+            this.outputAccumulated.Size = new System.Drawing.Size(53, 38);
             this.outputAccumulated.TabIndex = 1;
             this.outputAccumulated.Text = "16";
             this.outputAccumulated.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -828,45 +870,26 @@ namespace DSASkillchecks
             this.outputRolls.Location = new System.Drawing.Point(3, 61);
             this.outputRolls.Name = "outputRolls";
             this.outputRolls.Padding = new System.Windows.Forms.Padding(2);
-            this.outputRolls.Size = new System.Drawing.Size(141, 17);
+            this.outputRolls.Size = new System.Drawing.Size(53, 17);
             this.outputRolls.TabIndex = 2;
             this.outputRolls.Text = "0";
             this.outputRolls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(83, 19);
+            this.label6.Location = new System.Drawing.Point(10, 126);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Bonus";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(15, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Anzahl";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // output
-            // 
-            this.output.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.output.FormattingEnabled = true;
-            this.output.HorizontalScrollbar = true;
-            this.output.Location = new System.Drawing.Point(6, 225);
-            this.output.Name = "output";
-            this.output.Size = new System.Drawing.Size(152, 225);
-            this.output.TabIndex = 7;
-            // 
             // btn_d20
             // 
             this.btn_d20.Image = ((System.Drawing.Image)(resources.GetObject("btn_d20.Image")));
-            this.btn_d20.Location = new System.Drawing.Point(83, 62);
+            this.btn_d20.Location = new System.Drawing.Point(80, 39);
             this.btn_d20.Name = "btn_d20";
-            this.btn_d20.Size = new System.Drawing.Size(64, 64);
+            this.btn_d20.Size = new System.Drawing.Size(64, 63);
             this.btn_d20.TabIndex = 6;
             this.btn_d20.UseVisualStyleBackColor = true;
             this.btn_d20.Click += new System.EventHandler(this.btn_d20_Click);
@@ -874,40 +897,50 @@ namespace DSASkillchecks
             // btn_d6
             // 
             this.btn_d6.Image = ((System.Drawing.Image)(resources.GetObject("btn_d6.Image")));
-            this.btn_d6.Location = new System.Drawing.Point(13, 62);
+            this.btn_d6.Location = new System.Drawing.Point(10, 38);
             this.btn_d6.Name = "btn_d6";
             this.btn_d6.Size = new System.Drawing.Size(64, 64);
             this.btn_d6.TabIndex = 5;
             this.btn_d6.UseVisualStyleBackColor = true;
             this.btn_d6.Click += new System.EventHandler(this.btn_d6_Click);
             // 
-            // diceMod
+            // output
             // 
-            this.diceMod.Location = new System.Drawing.Point(83, 35);
-            this.diceMod.Minimum = new decimal(new int[] {
+            this.output.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.output.FormattingEnabled = true;
+            this.output.HorizontalScrollbar = true;
+            this.output.Location = new System.Drawing.Point(219, 18);
+            this.output.Name = "output";
+            this.output.Size = new System.Drawing.Size(149, 108);
+            this.output.TabIndex = 7;
+            // 
+            // d6Mod
+            // 
+            this.d6Mod.Location = new System.Drawing.Point(10, 103);
+            this.d6Mod.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
-            this.diceMod.Name = "diceMod";
-            this.diceMod.Size = new System.Drawing.Size(64, 20);
-            this.diceMod.TabIndex = 4;
-            this.diceMod.Tag = "";
-            this.diceMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.d6Mod.Name = "d6Mod";
+            this.d6Mod.Size = new System.Drawing.Size(64, 20);
+            this.d6Mod.TabIndex = 4;
+            this.d6Mod.Tag = "";
+            this.d6Mod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // diceCount
+            // d6Count
             // 
-            this.diceCount.Location = new System.Drawing.Point(15, 35);
-            this.diceCount.Minimum = new decimal(new int[] {
+            this.d6Count.Location = new System.Drawing.Point(10, 18);
+            this.d6Count.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.diceCount.Name = "diceCount";
-            this.diceCount.Size = new System.Drawing.Size(62, 20);
-            this.diceCount.TabIndex = 3;
-            this.diceCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.diceCount.Value = new decimal(new int[] {
+            this.d6Count.Name = "d6Count";
+            this.d6Count.Size = new System.Drawing.Size(64, 20);
+            this.d6Count.TabIndex = 3;
+            this.d6Count.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.d6Count.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -929,7 +962,7 @@ namespace DSASkillchecks
             this.groupBox2.Controls.Add(this.listBoxHistory);
             this.groupBox2.Location = new System.Drawing.Point(707, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(264, 466);
+            this.groupBox2.Size = new System.Drawing.Size(264, 257);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Probenhistorie";
@@ -948,7 +981,7 @@ namespace DSASkillchecks
             // 
             this.groupBox4.Location = new System.Drawing.Point(977, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(334, 466);
+            this.groupBox4.Size = new System.Drawing.Size(374, 162);
             this.groupBox4.TabIndex = 63;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Kampf";
@@ -967,7 +1000,7 @@ namespace DSASkillchecks
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 35);
+            this.label4.Location = new System.Drawing.Point(3, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 2;
@@ -977,7 +1010,7 @@ namespace DSASkillchecks
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 63);
+            this.label7.Location = new System.Drawing.Point(3, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 13);
             this.label7.TabIndex = 3;
@@ -991,7 +1024,7 @@ namespace DSASkillchecks
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel2.Controls.Add(this.iniTmp, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ausweichen, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.initiative, 4, 0);
@@ -1008,7 +1041,7 @@ namespace DSASkillchecks
             this.tableLayoutPanel2.Controls.Add(this.AE, 2, 4);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(983, 31);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 7;
+            this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -1016,7 +1049,7 @@ namespace DSASkillchecks
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(321, 199);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(362, 137);
             this.tableLayoutPanel2.TabIndex = 64;
             // 
             // iniTmp
@@ -1034,7 +1067,7 @@ namespace DSASkillchecks
             this.ausweichen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ausweichen.Location = new System.Drawing.Point(117, 31);
+            this.ausweichen.Location = new System.Drawing.Point(117, 30);
             this.ausweichen.Name = "ausweichen";
             this.ausweichen.Size = new System.Drawing.Size(44, 20);
             this.ausweichen.TabIndex = 24;
@@ -1084,26 +1117,6 @@ namespace DSASkillchecks
             0,
             0});
             // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "LE";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 119);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(21, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "AE";
-            // 
             // rollIni
             // 
             this.rollIni.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1112,7 +1125,7 @@ namespace DSASkillchecks
             this.rollIni.BackColor = System.Drawing.Color.MediumTurquoise;
             this.rollIni.Location = new System.Drawing.Point(259, 3);
             this.rollIni.Name = "rollIni";
-            this.rollIni.Size = new System.Drawing.Size(61, 22);
+            this.rollIni.Size = new System.Drawing.Size(100, 21);
             this.rollIni.TabIndex = 0;
             this.rollIni.Text = "würfeln";
             this.rollIni.UseVisualStyleBackColor = false;
@@ -1133,7 +1146,7 @@ namespace DSASkillchecks
             this.behinderung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.behinderung.Location = new System.Drawing.Point(117, 59);
+            this.behinderung.Location = new System.Drawing.Point(117, 57);
             this.behinderung.Name = "behinderung";
             this.behinderung.Size = new System.Drawing.Size(44, 20);
             this.behinderung.TabIndex = 25;
@@ -1143,12 +1156,32 @@ namespace DSASkillchecks
             0,
             0});
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "LE";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 116);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(21, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "AE";
+            // 
             // LE
             // 
             this.LE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LE.Location = new System.Drawing.Point(117, 87);
+            this.LE.Location = new System.Drawing.Point(117, 84);
             this.LE.Name = "LE";
             this.LE.Size = new System.Drawing.Size(44, 20);
             this.LE.TabIndex = 28;
@@ -1163,7 +1196,7 @@ namespace DSASkillchecks
             this.AE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AE.Location = new System.Drawing.Point(117, 115);
+            this.AE.Location = new System.Drawing.Point(117, 111);
             this.AE.Name = "AE";
             this.AE.Size = new System.Drawing.Size(44, 20);
             this.AE.TabIndex = 29;
@@ -1173,11 +1206,43 @@ namespace DSASkillchecks
             0,
             0});
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Location = new System.Drawing.Point(707, 275);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(264, 203);
+            this.groupBox5.TabIndex = 65;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Notizen (nicht gespeichert)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 19);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(252, 172);
+            this.textBox1.TabIndex = 0;
+            // 
+            // ruleVersionSelect
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.ruleVersionSelect, 3);
+            this.ruleVersionSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ruleVersionSelect.FormattingEnabled = true;
+            this.ruleVersionSelect.Items.AddRange(new object[] {
+            "DSA 4.1 Vanille",
+            "DSA 4.1 Hausregeln"});
+            this.ruleVersionSelect.Location = new System.Drawing.Point(258, 3);
+            this.ruleVersionSelect.Name = "ruleVersionSelect";
+            this.ruleVersionSelect.Size = new System.Drawing.Size(150, 21);
+            this.ruleVersionSelect.TabIndex = 66;
+            // 
             // SkillcheckTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1515, 512);
+            this.ClientSize = new System.Drawing.Size(1424, 512);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -1205,10 +1270,12 @@ namespace DSASkillchecks
             ((System.ComponentModel.ISupportInitialize)(this.MU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KL)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.d20Mod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.d20Count)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.diceMod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diceCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.d6Mod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.d6Count)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -1220,6 +1287,8 @@ namespace DSASkillchecks
             ((System.ComponentModel.ISupportInitialize)(this.behinderung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AE)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1267,10 +1336,9 @@ namespace DSASkillchecks
         private System.Windows.Forms.ListBox output;
         private System.Windows.Forms.Button btn_d20;
         private System.Windows.Forms.Button btn_d6;
-        private System.Windows.Forms.NumericUpDown diceMod;
-        private System.Windows.Forms.NumericUpDown diceCount;
+        private System.Windows.Forms.NumericUpDown d6Mod;
+        private System.Windows.Forms.NumericUpDown d6Count;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Label outputDieType;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -1305,6 +1373,12 @@ namespace DSASkillchecks
         private NumericUpDown LE;
         private NumericUpDown AE;
         private TextBox iniTmp;
+        private GroupBox groupBox5;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private TextBox textBox1;
+        private NumericUpDown d20Mod;
+        private NumericUpDown d20Count;
+        private ComboBox ruleVersionSelect;
     }
 }
 

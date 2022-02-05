@@ -9,9 +9,10 @@ using static DSASkillchecks.Die;
 /*
  * To do:
  * add weapons stats
+ * save notes
+ * save rule version with character
  * add action counter
  * catch file edited when combat stats are changed
- * unit-test for rolling methods
  */
 
 namespace DSASkillchecks
@@ -23,7 +24,7 @@ namespace DSASkillchecks
         bool edited = false;
         string[] categories = { "waffen", "körperlich", "gesellschaft", "natur", "wissen", "sprachen", "handwerk" }; 
         int currentCategory;
-        string versionNumber = "1.4";
+        string versionNumber = "1.5";
         Hero hero = new Hero("Heldenname");
         NumericUpDown[] entryAttributes;
         NumericUpDown[] entryCombat;
@@ -42,6 +43,7 @@ namespace DSASkillchecks
             InitializeInputFields(hero);
             currentCategory = 0;
             listBoxTalents.SelectedIndex = 0;
+            ruleVersionSelect.SelectedIndex = 0;
         }
 
         private void InitializeInputFields(Hero hero)
@@ -362,6 +364,7 @@ namespace DSASkillchecks
             {
                 Label[] outputRolls = { rollResult01, rollResult02, rollResult03 };
                 Label[] outputTalentValue = { tvRemainder01, tvRemainder02, tvRemainder03 };
+                skillcheckResult result;
                 int mod;
                 try
                 {
@@ -374,14 +377,18 @@ namespace DSASkillchecks
                     return;
                     throw;
                 }
-                
-                skillcheckResult result = hero.RollHouserule(r, selectedTalent, mod);
-                rollResult01.Text = result.rolls[0].ToString();
+
+                if (ruleVersionSelect.SelectedIndex == 1)
+                { result = hero.RollHouserule(r, selectedTalent, mod); }
+                else
+                { result = hero.RollVanilla(r, selectedTalent, mod); }
+             
                 for (int i = 0; i < 3; i++)
                 {
-                    outputRolls[i].Text = "" + result.rolls[i] + " gegen " + result.attributes[i];
+                    outputRolls[i].Text = $"{result.rolls[i]} gegen {result.attributes[i]}";
                     outputTalentValue[i].Text = result.talentValueRemainder[i].ToString();
                 }
+
                 OutputResult(result.talentValueRemainder[2], result.fumbleCounter, mod);
 
                 //reset attributes to original values
@@ -481,8 +488,8 @@ namespace DSASkillchecks
 
         private void btn_d6_Click(object sender, EventArgs e)
         {
-            int amount = Convert.ToInt32(diceCount.Value);
-            int mod = Convert.ToInt32(diceMod.Value);
+            int amount = Convert.ToInt32(d6Count.Value);
+            int mod = Convert.ToInt32(d6Mod.Value);
             Die die = new Die(6);
             rollResult result = die.Roll(r, amount, mod);
             PrintRollResults(die, result);
@@ -490,8 +497,8 @@ namespace DSASkillchecks
 
         private void btn_d20_Click(object sender, EventArgs e)
         {
-            int amount = Convert.ToInt32(diceCount.Value);
-            int mod = Convert.ToInt32(diceMod.Value);
+            int amount = Convert.ToInt32(d20Count.Value);
+            int mod = Convert.ToInt32(d20Mod.Value);
             Die die = new Die(20);
             rollResult result = die.Roll(r, amount, mod);
             PrintRollResults(die, result);
@@ -523,7 +530,7 @@ namespace DSASkillchecks
 
             // output to history
             output.Items.Add($"{rolled,-10} = {acc,-5} {results}");
-            output.Items.Add($"");
+            output.Items.Add("");
             output.SelectedIndex = output.Items.Count - 1;
             output.SetSelected(output.Items.Count - 1, false);
         }

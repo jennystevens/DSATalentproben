@@ -26,6 +26,35 @@ namespace DSASkillchecks
             combat = new Dictionary<string, int> { { "initiative", 8 }, { "ausweichen", 8 }, { "behinderung", 0 }, { "LE", 40 }, { "AE", 40 } };
         }
 
+        public skillcheckResult RollVanilla(Random r, Talent talent, int mod)
+        {
+            skillcheckResult result = new skillcheckResult();
+            int[] attributes = { this.attr[talent.attr01], this.attr[talent.attr02], this.attr[talent.attr03] };
+            int[] talentValueRemainder = new int[3];
+            int[] rolls = new int[3];
+            int talentValue = talent.talentValue - mod;
+            int fumbleCounter = 0;
+
+            // roll three times and save to rolls array
+            for (int i = 0; i < 3; i++)
+            {
+                rolls[i] = r.Next(1, 21);
+                if (rolls[i] == 20) fumbleCounter++;
+
+                //substract roll from attribute
+                int delta = attributes[i] - rolls[i];
+                if (delta < 0) talentValue += delta;
+                talentValueRemainder[i] = talentValue;
+            }
+
+            result.attributes = attributes;
+            result.rolls = rolls;
+            result.talentValueRemainder = talentValueRemainder;
+            result.fumbleCounter = fumbleCounter;
+
+            return result;
+        }
+
         public skillcheckResult RollHouserule(Random r, Talent talent, int mod)
         {
             skillcheckResult result = new skillcheckResult();
