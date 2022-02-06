@@ -10,7 +10,6 @@ using static DSASkillchecks.Die;
  * To do:
  * add weapons stats
  * save notes
- * save rule version with character
  * add action counter
  * catch file edited when combat stats are changed
  */
@@ -43,12 +42,12 @@ namespace DSASkillchecks
             InitializeInputFields(hero);
             currentCategory = 0;
             listBoxTalents.SelectedIndex = 0;
-            ruleVersionSelect.SelectedIndex = 0;
         }
 
         private void InitializeInputFields(Hero hero)
         {
             tbHeroName.Text = hero.name;
+            ruleVersionSelect.SelectedIndex = hero.ruleVersion;
             LoadAttributesToNum();
             LoadCombatToNum();
             LoadTalentsToListbox();
@@ -333,6 +332,7 @@ namespace DSASkillchecks
                     currentCategory = 0;
                     listBoxTalents.SelectedIndex = 0;
                     tbHeroName.Text = hero.name;
+                    ruleVersionSelect.SelectedIndex = hero.ruleVersion;
 
                     edited = false;
                     this.Text = $"DSA Talentprobenrechner v{versionNumber} - {fh.Filename}";
@@ -533,6 +533,11 @@ namespace DSASkillchecks
             output.Items.Add("");
             output.SelectedIndex = output.Items.Count - 1;
             output.SetSelected(output.Items.Count - 1, false);
+        }
+
+        private void ruleVersionSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hero.ruleVersion = ruleVersionSelect.SelectedIndex;
         }
     }
 }

@@ -76,6 +76,7 @@ namespace DSASkillchecks
             this.result = new System.Windows.Forms.Label();
             this.btnDeleteTalent = new System.Windows.Forms.Button();
             this.labelCategory = new System.Windows.Forms.Label();
+            this.ruleVersionSelect = new System.Windows.Forms.ComboBox();
             this.listBoxHistory = new System.Windows.Forms.ListBox();
             this.versionInfo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -115,7 +116,6 @@ namespace DSASkillchecks
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ruleVersionSelect = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KO)).BeginInit();
@@ -759,6 +759,20 @@ namespace DSASkillchecks
             this.labelCategory.Text = "Kategorie";
             this.labelCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // ruleVersionSelect
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.ruleVersionSelect, 3);
+            this.ruleVersionSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ruleVersionSelect.FormattingEnabled = true;
+            this.ruleVersionSelect.Items.AddRange(new object[] {
+            "DSA 4.1 Vanille",
+            "DSA 4.1 Hausregeln"});
+            this.ruleVersionSelect.Location = new System.Drawing.Point(258, 3);
+            this.ruleVersionSelect.Name = "ruleVersionSelect";
+            this.ruleVersionSelect.Size = new System.Drawing.Size(150, 21);
+            this.ruleVersionSelect.TabIndex = 66;
+            this.ruleVersionSelect.SelectedIndexChanged += new System.EventHandler(this.ruleVersionSelect_SelectedIndexChanged);
+            // 
             // listBoxHistory
             // 
             this.listBoxHistory.FormattingEnabled = true;
@@ -1223,19 +1237,6 @@ namespace DSASkillchecks
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(252, 172);
             this.textBox1.TabIndex = 0;
-            // 
-            // ruleVersionSelect
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.ruleVersionSelect, 3);
-            this.ruleVersionSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ruleVersionSelect.FormattingEnabled = true;
-            this.ruleVersionSelect.Items.AddRange(new object[] {
-            "DSA 4.1 Vanille",
-            "DSA 4.1 Hausregeln"});
-            this.ruleVersionSelect.Location = new System.Drawing.Point(258, 3);
-            this.ruleVersionSelect.Name = "ruleVersionSelect";
-            this.ruleVersionSelect.Size = new System.Drawing.Size(150, 21);
-            this.ruleVersionSelect.TabIndex = 66;
             // 
             // SkillcheckTool
             // 

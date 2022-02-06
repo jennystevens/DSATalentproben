@@ -7,6 +7,7 @@ namespace DSASkillchecks
     public class Hero
     {
         public string name { get; set; }
+        public int ruleVersion;
         public List<Talent> talents;
         public Dictionary<string, int> attr;
         public Dictionary<string, int> combat;
@@ -21,6 +22,7 @@ namespace DSASkillchecks
         public Hero(string name)
         {
             this.name = name;
+            this.ruleVersion = 0;
             talents = new List<Talent>();
             attr = new Dictionary<string, int> { { "MU", 8 }, { "KL", 8 }, { "IN", 8 }, { "CH", 8 }, { "FF", 8 }, { "GE", 8 }, { "KO", 8 }, { "KK", 8 } };
             combat = new Dictionary<string, int> { { "initiative", 8 }, { "ausweichen", 8 }, { "behinderung", 0 }, { "LE", 40 }, { "AE", 40 } };

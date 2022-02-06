@@ -24,6 +24,7 @@ namespace DSASkillchecks
             XElement heroStats =
                 new XElement("Hero",
                     new XElement("heroname", hero.name),
+                    new XElement("ruleVersion", hero.ruleVersion),
                     new XElement("attributes", hero.attr.Select(kv => new XElement(kv.Key, kv.Value))),
                     new XElement("combat", hero.combat.Select(kv => new XElement(kv.Key, kv.Value)))
                 );
@@ -54,6 +55,7 @@ namespace DSASkillchecks
         {
             XElement heroStats = XElement.Load(path);
             hero.name = LoadName(heroStats);
+            hero.ruleVersion = LoadRuleVersion(heroStats);
             hero.attr = LoadAttributes(heroStats);
             hero.combat = LoadCombat(heroStats);
             hero.talents = LoadTalents(heroStats);
@@ -66,6 +68,14 @@ namespace DSASkillchecks
                                              select descendant;
             string name = heroname.ElementAt(0).Value.ToString();
             return name;
+        }
+
+        int LoadRuleVersion(XElement heroStats)
+        {
+            IEnumerable<XElement> ruleVersion = from descendant in heroStats.Descendants("ruleVersion")
+                                             select descendant;
+            int version = Convert.ToInt32(ruleVersion.ElementAt(0).Value);
+            return version;
         }
 
         Dictionary<string, int> LoadAttributes(XElement heroStats)
